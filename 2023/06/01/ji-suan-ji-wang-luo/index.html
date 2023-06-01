@@ -1,0 +1,2297 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机网络, ZHOU">
+    <meta name="description" content="计算机网络基础知识汇总">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>计算机网络 | ZHOU</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/matery.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/reward.css">
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ZHOU</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/movies" class="waves-effect waves-light">
+      
+      <i class="fas fa-film" style="zoom: 0.6;"></i>
+      
+      <span>Movies</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/books" class="waves-effect waves-light">
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>Books</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ZHOU</div>
+        <div class="logo-desc">
+            
+            欢迎访问LRZ的博客
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/movies" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-film"></i>
+			
+			Movies
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/books" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-book"></i>
+			
+			Books
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1545569310-f6d4b4d7ede9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwxOHx8bmV0d29ya3xlbnwwfHx8fDE2ODE2NDkzNDU&ixlib=rb-4.0.3&q=80&w=1080')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机网络</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                关于学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-06-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    30 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自学B站上计算机网络相关视频，自己总结的笔记，方便自己学习查阅</p>
+<p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NT411g7n6/?spm_id_from=..search-card.all.click">深入浅出计算机网络</a>、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19E411D78Q/?spm_id_from=..search-card.all.click">王道考研</a></p>
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="因特网概述"><a href="#因特网概述" class="headerlink" title="因特网概述"></a>因特网概述</h2><ol>
+<li>网络与因特网的区别与联系</li>
+</ol>
+<ul>
+<li>若干节点和链路互连形成网络</li>
+<li>若干网络通过路由器互连形成互联网</li>
+<li>因特网是当今世上最大的互联网</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>internet</th>
+<th>Internet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用名词</td>
+<td>专有名词</td>
+</tr>
+<tr>
+<td>互联网</td>
+<td>因特网</td>
+</tr>
+<tr>
+<td>任意的通信协议</td>
+<td>TCP&#x2F;IP</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><p>因特网服务提供者（ISP，Internet Service Provider）</p>
+</li>
+<li><p>因特网已发展成为基于ISP的多层次结构的互连网络</p>
+</li>
+</ol>
+<ul>
+<li><p>第一层：国际级</p>
+</li>
+<li><p>第二层：区域或国家级</p>
+</li>
+<li><p>第三层：本地级</p>
+</li>
+</ul>
+<p>值得注意的是，已接入用户也可以成为ISP（个人理解类似于长城宽带！？）</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/16/741bd1e2e44cecbc.png" alt="图源《深入浅出计算机网络》"></p>
+<ol start="4">
+<li>因特网的组成</li>
+</ol>
+<ul>
+<li><p>边缘部分：各类主机（如台式电脑，笔记本电脑，打印机等）</p>
+</li>
+<li><p>核心部分：网络与连接这些网络的路由器组成</p>
+</li>
+</ul>
+<h2 id="交换技术"><a href="#交换技术" class="headerlink" title="交换技术"></a>交换技术</h2><ol>
+<li>电路交换（需提前建立连接）</li>
+</ol>
+<pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR 
+建立连接-分配通信资源 <span class="token arrow operator">--></span> 通话-一直占用通信资源 <span class="token arrow operator">--></span> 释放连接-归还通信资源<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>​	缺点：线路利用率低，不能充分利用线路容量，不便于进行差错控制</p>
+<ol start="2">
+<li><strong>分组交换</strong>（无需建立连接）</li>
+</ol>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/16/6b658de58e83ddf7.png" alt="图源《深入浅出计算机网络》"></p>
+<p>缺点：</p>
+<ul>
+<li>分组首部增加传输开销</li>
+<li>交换节点存储转发分组会带来一定的时延</li>
+<li>无法确保通信时端到端通信资源全部可用，在通信量较大时可能造成网络拥塞</li>
+<li>分组可能会出现失序和丢失等问题</li>
+</ul>
+<ol start="3">
+<li>报文交换</li>
+</ol>
+<ul>
+<li>分组交换的前身</li>
+<li>将整个报文发送，而不是拆分分组</li>
+<li>交换节点将整个报文接收完成后才开始查找转发表，然后确定转发目标</li>
+<li>因此时延要长得多，同时交换节点需要的缓存空间也大</li>
+</ul>
+<p>对比：</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/16/7e809aedb78a0d3a.png" alt="图源《深入浅出计算机网络》"></p>
+<h2 id="计算机网络定义及分类"><a href="#计算机网络定义及分类" class="headerlink" title="计算机网络定义及分类"></a>计算机网络定义及分类</h2><p>计算机网络就是一些互联的，自治的计算机系统集合</p>
+<p>分类：</p>
+<ul>
+<li>按交换方式<ul>
+<li>电路交换</li>
+<li>分组交换</li>
+<li>报文交换</li>
+</ul>
+</li>
+<li>按使用者<ul>
+<li>公用网</li>
+<li>专用网</li>
+</ul>
+</li>
+<li>按传输介质<ul>
+<li>有线</li>
+<li>无线</li>
+</ul>
+</li>
+<li>按覆盖范围<ul>
+<li>广域网（WAN）</li>
+<li>城域网（MAN）</li>
+<li>局域网（LAN）</li>
+<li>个域网（PAN）</li>
+</ul>
+</li>
+<li>按拓扑结构<ul>
+<li>总线</li>
+<li>星型</li>
+<li>网状</li>
+<li>环形</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机系统性能指标"><a href="#计算机系统性能指标" class="headerlink" title="计算机系统性能指标"></a>计算机系统性能指标</h2><ol>
+<li><p>速率</p>
+<ul>
+<li>比特（bit）计算机中数据量的基本单位</li>
+<li>即数据传送速率，每秒传送多少个比特，也称数据率或比特率</li>
+<li>基本单位是b&#x2F;s，常用的还有kb&#x2F;s，Mb&#x2F;s，Gb&#x2F;s，Tb&#x2F;s</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/21/83990b5e2fbfb66d.png"></p>
+</li>
+<li><p>带宽</p>
+<ul>
+<li>用来表示网络的通信线路所能传送数据的能力，即在单位时间内从网络中的某一点到另一点所能通过的最高数据率</li>
+<li>单位：b&#x2F;s</li>
+</ul>
+</li>
+<li><p>吞吐量</p>
+<ul>
+<li>单位时间内通过某个网络或接口的实际数据量</li>
+<li>受网络带宽限制</li>
+</ul>
+</li>
+<li><p>时延</p>
+<ul>
+<li><p>数据从网络的一端到另一端所耗费的时间</p>
+</li>
+<li><p>总时延 &#x3D; 发送时延 + 传播时延 + 排队时延 + 处理时延</p>
+</li>
+<li><p>发送时延 &#x3D; 分组长度（b） &#x2F; 发送速率(b&#x2F;s) </p>
+<ul>
+<li>发送速率 &#x3D; min(主机接口速率，线路带宽，交换机或路由器的接口速率)</li>
+</ul>
+</li>
+<li><p>传播时延 &#x3D; 信道长度(m) &#x2F; 信号传播速率（m&#x2F;s）</p>
+</li>
+<li><p>排队时延（一般忽略）</p>
+</li>
+<li><p>处理时延（一般忽略）</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/17/3eca2bd7928ce41f.png" alt="《深入浅出计算机网络》"></p>
+</li>
+</ul>
+</li>
+<li><p>时延带宽积</p>
+<ul>
+<li>传播时延 x 带宽 （即圆柱体积）</li>
+</ul>
+</li>
+<li><p>往返时间（RTT）</p>
+<ul>
+<li>双向交互一次需要的时间</li>
+</ul>
+</li>
+<li><p>利用率</p>
+<ul>
+<li>信道利用率：当某信道利用率增大时，该信道引起的时延也会迅速增加</li>
+<li>网络利用率</li>
+</ul>
+</li>
+<li><p>丢包率</p>
+<ul>
+<li>分组丢失率，即在一定时间范围内，传输过程中丢失的分组数量和总分组数量的比率</li>
+<li>分组丢失情况<ul>
+<li>分组传输过程中出现<strong>误码</strong>，被结点丢弃</li>
+<li>分组达到一台队列已满的分组交换机时被丢弃；在通信量较大时可能造成<strong>网络堵塞</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><ol>
+<li><p>常见的计算机网络体系结构</p>
+<ul>
+<li><p>OSI七层模型</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/19/9c36da1dc2d74344.png" alt="《深入浅出计算机网络》"></p>
+</li>
+<li><p>TCP&#x2F;IP体系结构</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/19/9bd4777a2c7f67ea.png" alt="《深入浅出计算机网络》"></p>
+</li>
+<li><p>原理体系结构（5层模型）</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/19/7546cadbcd696792.png" alt="《深入浅出计算机网络》"></p>
+</li>
+</ul>
+</li>
+<li><p>分层的必要性（以5层模型为例）</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/19/cd558d40cc4b8881.png" alt="《深入浅出计算机网络》"></p>
+</li>
+<li><p>分层思想举例</p>
+<p>逐层封装然后解封的过程</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/20/1433f75d080bcfcf.png"></p>
+</li>
+<li><p>相关专业术语</p>
+<ul>
+<li><p>实体</p>
+</li>
+<li><p>任何可发送或接受信息的硬件或软件进程</p>
+</li>
+<li><p>对等实体</p>
+<ul>
+<li>收发双方相同层次中的实体</li>
+</ul>
+</li>
+<li><p>协议</p>
+<ul>
+<li>控制两个对等实体进行逻辑通信的规则的集合</li>
+<li>三要素<ul>
+<li>语法 定义交换信息的格式</li>
+<li>语义 定义收发双方所要完成的操作</li>
+<li>同步 定义收发双方的时序关系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>服务</p>
+<ul>
+<li>在协议的控制下，两个对等实体间的逻辑通信使得本层能够向上一层提供服务</li>
+<li>要实现本层协议，还需要利用下一层所提供的服务</li>
+<li>协议是水平的，服务是垂直的</li>
+<li>实体看得见相邻下层提供的服务，但并不知道实现该服务的具体协议，也就是下面的协议对上一层的实体是透明（即看不见）的</li>
+</ul>
+</li>
+<li><p>服务访问点</p>
+<ul>
+<li>在同一系统中相邻两层的实体交换信息的逻辑接口，用于区分不同的服务类型</li>
+<li>例如：数据链路层的服务访问点为帧的类型字段；网络层的为IP数据报首部中的协议字段；运输层为端口号</li>
+</ul>
+</li>
+<li><p>服务原语</p>
+<ul>
+<li>上层使用下层所提供的服务必须通过与下层交换的命令</li>
+</ul>
+</li>
+<li><p>协议数据单元PDU</p>
+<ul>
+<li>对等层次之间传送的数据包</li>
+</ul>
+</li>
+<li><p>服务数据单元SDU</p>
+<ul>
+<li>同一系统内，层与层之间交换的数据包</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/20/48b4a3306b2f48f4.png"></p>
+</li>
+</ol>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="物理层基本概念"><a href="#物理层基本概念" class="headerlink" title="物理层基本概念"></a>物理层基本概念</h2><ul>
+<li>物理层考虑的是怎样才能在连接各种计算机的传输媒体上传输数据比特流</li>
+<li>物理层为数据链路层屏蔽了各种传输媒体的差异，使数据链路层只需要考虑如何完成本层的协议和服务，不必考虑网络具体的传输媒体是什么</li>
+</ul>
+<h2 id="数据通信相关术语"><a href="#数据通信相关术语" class="headerlink" title="数据通信相关术语"></a>数据通信相关术语</h2><ul>
+<li>数据 传送信息的实体</li>
+<li>信号 数据的电气或电磁表现，数据在传输过程中的存在形式</li>
+<li><strong>码元</strong> <ul>
+<li>用一个固定时长的信号波形（数字脉冲）表示一位K进制数字，代表不同离散数值的基本波形，该时长内的信号叫k（即码元离散状态个数）进制码元，而该时长称为<strong>码元宽度</strong>；1码元可以携带若干比特的信息量<ul>
+<li>例如：二进制码元，只有两种不同状态的码元，一种代表0，一种代表1；即1码元携带1比特信息</li>
+<li>4进制码元，则有四种不同状态，1码元携带2比特信息</li>
+<li>X进制码元，则有X种不同状态，1码元携带log<del>2</del>X比特信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>信源 产生和发送数据的源头</li>
+<li>信道 信号的传输媒介</li>
+<li>信宿 接收数据的终点</li>
+<li>基带信号 对应数字信号</li>
+<li>宽带信号 对应模拟信号</li>
+<li>速率 数据传输速率，单位时间内传输的数据量<ul>
+<li>码元传输速率（波特率）  <strong>即一秒传输多少码元</strong><ul>
+<li>单位时间内数字通信系统传输的码元个数或脉冲个数或信号变化次数，单位为波特（Baud），码元速率与进制数无关</li>
+</ul>
+</li>
+<li>信息传输速率（信息速率&#x2F;比特率） <strong>即一秒传输多少比特</strong><ul>
+<li>单位时间内数字通信系统传输的二进制码元个数（即比特数），单位是比特每秒（b&#x2F;s）</li>
+</ul>
+</li>
+<li>两者数量关系<ul>
+<li>若一码元携带<code>n</code>比特的信息量，则<code>M</code>波特率的码元传输速率对应信息传输速率为<code>M*n b/s</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h2><ul>
+<li>双绞线</li>
+<li>同轴电缆</li>
+<li>光纤</li>
+<li>无线传输介质</li>
+</ul>
+<h2 id="传输方式"><a href="#传输方式" class="headerlink" title="传输方式"></a>传输方式</h2><ul>
+<li>串行传输与并行传输</li>
+<li><strong>同步传输与异步传输</strong><ul>
+<li>同步：各字节间没有间隔</li>
+<li>异步：字节间存在间隔（不固定），但字节中的比特持续时间仍相同</li>
+</ul>
+</li>
+<li>单工、半双工和全双工</li>
+</ul>
+<h2 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h2><p>把数据变换为数字信号的过程叫<strong>编码</strong></p>
+<p>把数据变换为模拟信号的过程叫<strong>调制</strong></p>
+<ol>
+<li><strong>数字数据编码为数字信号</strong></li>
+</ol>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/22/77ba492ece64f9ee.png"></p>
+<ul>
+<li>归零编码（RZ）<ul>
+<li>高电平为1，低电平为0，每个时钟周期中间均需要归零</li>
+</ul>
+</li>
+<li>非归零编码（NRZ）<ul>
+<li>高电平为1，低电平为0，无需归零，一个周期可全部用于传输数据</li>
+</ul>
+</li>
+<li><strong>曼彻斯特编码</strong><ul>
+<li>将码元分成两个相等的间隙，前一个间隔为高电平而后一个间隔为低电平表示1，相反则表示0；也可以采用相反的规定</li>
+<li>每个码元中间都会出现电平的跳变，此跳变既可以作为时钟同步，也可以作为数据信号</li>
+<li>以太网使用的便是此编码</li>
+</ul>
+</li>
+<li>差分曼彻斯特编码<ul>
+<li>若码元为1，则前半个码元的电平与上一码元的后半个码元电平一致；若为0，则相反</li>
+<li>每个码元中间都会出现跳变，可实现自同步，抗干扰性较好</li>
+<li>常用于局域网传输</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>数字数据调制为模拟信号</strong></li>
+</ol>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/22/aa28fc2d14cb2493.png"></p>
+<ul>
+<li>幅移键控（ASK） 调幅（AM）</li>
+<li>频移键控（FSK） 调频（FM）</li>
+<li>相移键控（PSK） 调相（PM）</li>
+<li>正交振幅调制（QAM） 将ASK与PSK结合</li>
+</ul>
+<ol start="3">
+<li><strong>模拟数据编码为数字信号</strong></li>
+</ol>
+<ul>
+<li>采样<ul>
+<li>对模拟信号进行周期性扫描，然后把时间上连续的信号变成时间上离散的信号</li>
+</ul>
+</li>
+<li>量化<ul>
+<li>将离散的信号根据一定标准转化成离散的数字</li>
+</ul>
+</li>
+<li>编码<ul>
+<li>把量化的结果转为与之对应的二进制编码</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>模拟数据调制为模拟信号</li>
+</ol>
+<h2 id="信道极限容量"><a href="#信道极限容量" class="headerlink" title="信道极限容量"></a>信道极限容量</h2><ol>
+<li><p><strong>奈氏准则</strong></p>
+<p>$理想低通信道下的极限数据传输速率 &#x3D; 2Wlog<del>2</del>V$  (单位b&#x2F;s)​</p>
+<ul>
+<li>W为理想低通信道的带宽</li>
+<li>V为每个码元离散电平的数目，即多少种不同的码元</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/22/ecd63acffe6f17cc.png"></p>
+</li>
+<li><p><strong>香农定理</strong></p>
+<p>$信道极限数据传输速率 &#x3D; Wlog<del>2</del>(1+S&#x2F;N)$  (单位b&#x2F;s)​</p>
+<p>$信噪比 &#x3D; 10log<del>10</del>(S&#x2F;N)dB$</p>
+<ul>
+<li>W为信道带宽</li>
+<li>S为信道所传输信号的平均功率</li>
+<li>N为信道内部的高斯噪声功率</li>
+<li>S&#x2F;N为信噪比</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/22/7d8f0a563102e122.png"></p>
+</li>
+</ol>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/22/51d03383a016998c.png"></p>
+<h2 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h2><ol>
+<li>频分复用(FDM)</li>
+<li>时分复用(TDM)</li>
+<li>波分复用(WDM)</li>
+<li>码分复用(CDM)</li>
+</ol>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="数据链路层的功能"><a href="#数据链路层的功能" class="headerlink" title="数据链路层的功能"></a>数据链路层的功能</h2><ol>
+<li><p>为网络层提供服务</p>
+<ul>
+<li>无确认的无连接服务</li>
+<li>有确认的无连接服务</li>
+<li>有确认的面向连接服务</li>
+</ul>
+</li>
+<li><p>链路管理 </p>
+<p>连接的建立 -&gt; 传输帧 -&gt; 释放连接</p>
+</li>
+<li><p>帧定界</p>
+<p>将一段数据的前后添加相应的首部和尾部，确定帧的界限</p>
+</li>
+<li><p>帧同步</p>
+<p>接收方应能从接收到的二进制比特流中区分帧的起始和终止</p>
+</li>
+<li><p>透明传输</p>
+<p>不管传的数据是什么样的比特组合，都应能在链路上传送，即避免把传输的数据误解为帧定界</p>
+</li>
+<li><p>差错控制</p>
+<p>用以使发送方确定接收方是否正确收到由其发送的数据的方法</p>
+</li>
+</ol>
+<h2 id="数据链路层三个重要问题"><a href="#数据链路层三个重要问题" class="headerlink" title="数据链路层三个重要问题"></a>数据链路层三个重要问题</h2><h3 id="封装成帧和透明传输"><a href="#封装成帧和透明传输" class="headerlink" title="封装成帧和透明传输"></a>封装成帧和透明传输</h3><ol>
+<li><p>封装成帧 </p>
+<p>封装成帧是指将数据链路层给上层交付的协议数据单元添加帧头和帧尾组成为帧</p>
+<ul>
+<li>帧头和帧尾有重要的控制信息，其中一个作用就是作为帧定界</li>
+</ul>
+</li>
+<li><p>透明传输</p>
+<p>数据链路层对上层交付的传输数据没有任何限制，就像链路层不存在一样</p>
+<ul>
+<li>字符填充法实现 插入转义字符</li>
+<li>零比特填充法实现 插入比特0</li>
+</ul>
+</li>
+</ol>
+<p>为了提高帧的传输速率，帧的数据长度应尽可能大，但&lt;&#x3D;最大传送单元（MTU）</p>
+<h3 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h3><ul>
+<li><p>传输过程中1可能变成0，0也可能变成1，这就叫<strong>比特差错</strong></p>
+</li>
+<li><p>在一段时间内，传输错误的比特占所传输比特总数的比率叫误码率（BER）</p>
+</li>
+</ul>
+<p>可以通过<code>检错编码</code>来检测传输过程中是否产生了比特差错，不过其只能判断是否出现错误，而无法确定错误位置，然后纠正错误。</p>
+<ol>
+<li><p>奇偶校验码</p>
+<ul>
+<li>在待发送的数据后面添加一位校验码，使整个数据（包括校验码在内）中“1”的个数为奇数（奇校验）或偶数（偶校验）</li>
+<li>若有奇数个位发生误码，则奇偶性发生变化时即可判断出是否出现误码</li>
+<li>若有偶数个位发生误码，则奇偶性不发生变化，无法判断是否出现误码（漏检）</li>
+<li>该方法漏检率较高，不常用</li>
+</ul>
+</li>
+<li><p>循环冗余码（CRC）</p>
+<ul>
+<li>收发双方约定一个<code>生成多项式G(x)</code></li>
+<li>发送方基于待发送的数据和生成多项式计算差错检测码（冗余码），将其添加到待发送数据后面一起传输</li>
+<li>接收方通过生成多项式计算收到的数据是否产生误码</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/db2859bc607b82db.png" alt="计算方法"></p>
+</li>
+</ol>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/9cfb42b7a2f6e339.png" alt="计算示例（除法做的是异或运算）"></p>
+<p>循环冗余码（CRC）的漏检率较低，且易于用硬件实现，因此被广泛用于数据链路层</p>
+<h3 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h3><ul>
+<li>数据链路层向上提供的服务类型<ul>
+<li>不可靠传输服务：仅仅丢弃有误码的帧，其他什么也不做</li>
+<li>可靠传输服务：想办法实现发送端发送什么，接收端就接收什么</li>
+</ul>
+</li>
+<li>一般情况下，有线链路误码率较低，为减少开销，并不要求向上层提供可靠传输服务；而无线链路误码率较高，因此需要向上提供可靠传输服务</li>
+<li>传输差错包括<code>分组丢失</code>，<code>分组失序</code>，<code>分组重复</code>和<code>比特差错</code>等</li>
+<li>可靠传输服务并不局限在数据链路层，其他各层均可选择实现可靠传输</li>
+<li>可靠传输的开销较大，可根据实际情况选择性实现</li>
+</ul>
+<p>下面介绍三种可靠传输协议机制：</p>
+<ol>
+<li><strong>停止-等待协议SW</strong></li>
+</ol>
+<ul>
+<li><p>确认与否认</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/bf387edb0887df6a.png"></p>
+</li>
+<li><p>超时重传 一般设定重传时间为略大于“从发送方到接收方的平均往返时间”</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/4e0d4bf8c66ab6f8.png"></p>
+</li>
+<li><p>确认丢失 给发送数据添加对应的编号</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/6d0858725d8ab2be.png"></p>
+</li>
+<li><p>确认迟到 给确认添加对应的编号</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/f7048e1132ce4d65.png"></p>
+</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>对于误码率较高的点对点链路，为了能够让发送方尽早重传，可以给发送方发送NAK分组，这样无需等待超时重传</li>
+<li>为了让接收方判断收到的数据是否重复，需要给数据分组添加编号，由于停止-等待协议的特性，因此只需要1个比特就够了，即0和1</li>
+<li>为了让发送方判断收到的确认是否重复，同样也需要给ACK分组添加编号，但数据链路层上基本不会发生确认迟到，因此可以无需编号</li>
+</ul>
+<p>信道利用率U &#x3D; T<del>D</del> &#x2F; T<del>D</del> + RTT + T<del>A</del></p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/25/8c6703115429636e.png"></p>
+<ul>
+<li>T<del>D</del> 发送方耗费的发送时延</li>
+<li>RTT 往返时间</li>
+<li>T<del>A</del> 接收方返回耗费的发送时延（因比T<del>D</del>要小的多，常忽略不计）</li>
+</ul>
+<ol start="2">
+<li><strong>回退N帧协议GBN</strong></li>
+</ol>
+<p>在流水线传输的基础上利用发送窗口来限制发送方连续发送数据分组的数量，是一种连续ARQ协议；在协议工作过程中发送窗口和接收窗口不断向前滑动，因此这类协议又称为滑动窗口协议</p>
+<ul>
+<li><p>发送窗口的尺寸记为<code>WT</code>，其取值范围是：1 &lt; WT &lt;&#x3D; 2^n^ - 1 （n表示比特数）</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/26/51b0e1a23b3f186a.png"></p>
+</li>
+<li><p>接收窗口的尺寸记为<code>WR</code>，对于回退N帧协议，其取值只能为 1</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/26/5b9608e0d8d6b83e.png"></p>
+</li>
+<li><p><code>累计确认</code>：接收方不一定要对收到的数据分组进行逐个发送确认，而是可以根据实际情况在收到多个数据分组后，对按序到达的最后一个数据分组进行发送确认。如ACKn表示数据分组n及其之前的数据分组均已收到。因此确认分组丢失后，发送方也可能不必超时重传</p>
+</li>
+<li><p>发送方收到重复的确认就可以知道之前的传输出现了差错，由此可以不需要等待超时时间即可立即重传</p>
+</li>
+<li><p>当WT超出其上限时，会造成接收方无法分辨新旧数据分组</p>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/26/378e1920f01b8d4a.png" alt="总结"></p>
+<ul>
+<li>当信道的传输质量很差导致误码率很高的时候，回退N帧协议并不一定优于停止-等待协议</li>
+</ul>
+<ol start="3">
+<li><strong>选择重传协议</strong></li>
+</ol>
+<p>由于回退N帧协议的接收方窗口尺寸WR只能为1，只能按序接收数据分组，因此当其中一个数据分组出现误码时，会导致其后续的数据分组都会被丢弃然后超时重传，这样极大浪费了通信资源。</p>
+<p>若有办法只重传存在误码的数据分组，其效率将会得到提高。因此接收窗口尺寸WR应大于1，以便可以先接收失序到达但其本身并无误码的数据分组，等到所有分组全部到齐后再传输到上层，这就是<code>选择重传协议</code></p>
+<ul>
+<li>为了能够使发送方只重传出现误码的数据分组，接收方不能再采用累计确认，只能进行逐个确认</li>
+<li>发送方的发送窗口尺寸WT必须满足：1 &lt; WT &lt;&#x3D; 2^(n-1)^<ul>
+<li>WT &#x3D; 1，则是停止-等待协议</li>
+<li>WT超出最大范围，则接收方无法区分新旧数据分组</li>
+</ul>
+</li>
+<li>接收方的接收窗口尺寸WR必须满足：1 &lt; WR &lt;&#x3D; WT<ul>
+<li>WR &#x3D; 1，则是回退N帧协议</li>
+<li>WR 超出最大范围，无意义</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/26/e553ccdafe7c237e.png" alt="总结"></p>
+<h2 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h2><ul>
+<li><p>目前使用最广泛的<strong>点对点数据链路层协议</strong></p>
+</li>
+<li><p>PPP协议为在点对点链路传输各种协议数据报提供了一个标准方法，主要有三部分组成：</p>
+<ul>
+<li>对各种协议数据报的封装方法（封装成帧）</li>
+<li>链路控制协议LCP 用于建立、配置和测试数据链路的连接</li>
+<li>一套网络控制协议NCPs 其中的每一个协议支持不同的网络层协议</li>
+</ul>
+</li>
+<li><p>PPP帧的透明传输</p>
+<ul>
+<li>面向字节的异步链路使用字节填充法（插入转义字符）</li>
+<li>面向比特的同步链路是使用比特填充法（插入零比特）</li>
+</ul>
+</li>
+<li><p>PPP协议工作状态</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/27/8aaefe1f729d8276.png"></p>
+</li>
+</ul>
+<h2 id="共享式以太网"><a href="#共享式以太网" class="headerlink" title="共享式以太网"></a>共享式以太网</h2><h3 id="网络适配器"><a href="#网络适配器" class="headerlink" title="网络适配器"></a>网络适配器</h3><ul>
+<li>将计算机连接到以太网需要使用相应的网络适配器，也叫<code>网卡</code></li>
+<li>计算机内部中，网卡与CPU之间的通信，一般是通过计算机主板上的I&#x2F;O总线以<code>并行传输</code>的方式进行</li>
+<li>网卡与外部以太网（局域网）之间的通信，一般是通过传输媒体（如光纤，同轴电缆）以<code>串行</code>方式进行</li>
+<li>网卡其中一个重要功能就是要进行并行传输和串行传输的转换</li>
+<li>为了网卡能够正常工作，一般还需要安装相应的驱动，驱动程序的作用是负责驱动网卡发送和接收帧</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/27/1ce89b800bffa3ee.png"></p>
+<h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><ul>
+<li><p>一般被固化在网卡的电可擦可编程只读存储器EEPROM中，因此也叫<strong>硬件地址（物理地址）</strong></p>
+</li>
+<li><p>需要注意的是物理地址属于数据链路层范畴而非物理层</p>
+</li>
+<li><p>一般情况下，普通用户计算机通常包含两块网卡</p>
+<ul>
+<li>接入有线局域网的以太网卡</li>
+<li>接入无线局域网的WIFI网卡</li>
+</ul>
+</li>
+<li><p>每块网卡都有一个全球唯一的MAC地址</p>
+</li>
+<li><p>交换机和路由器具有更多的网络接口，所以会有更多的MAC地址</p>
+</li>
+<li><p>MAC地址是对网络上各接口的唯一标识，不是对网络上各设备的唯一标识</p>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/27/2cf02c9ce28e5325.png"></p>
+<h3 id="CSMA-x2F-CD协议"><a href="#CSMA-x2F-CD协议" class="headerlink" title="CSMA&#x2F;CD协议"></a>CSMA&#x2F;CD协议</h3><ul>
+<li><p>共享总线以太网有天然的广播特性，总线上连接有多个站点，当某个站点发送帧时，总线资源会被该站点独占，若此时其他站点也在总线上发送帧，就会产生<code>信号碰撞</code></p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/27/46c182338e144109.png"></p>
+</li>
+<li><p>为解决碰撞问题，就采用了CSMA&#x2F;CD协议，即<code>载波监听多址接入/碰撞检测协议</code></p>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/27/9c157cab0e857df5.png"></p>
+<ul>
+<li>载波监听到总线空闲的时候，总线实际上可能并不空闲</li>
+<li>CSMA&#x2F;CD协议只是尽量避免碰撞，但无法实现完全不碰撞</li>
+<li>使用该协议时，由于正在发送帧的站点必须边发送帧边检测碰撞，所以站点不可能一边发送一边接受的，因此只能进行半双工通信</li>
+</ul>
+<h3 id="共享式以太网的争用期"><a href="#共享式以太网的争用期" class="headerlink" title="共享式以太网的争用期"></a>共享式以太网的争用期</h3><ul>
+<li>站点从发送帧开始，最多经过时长2τ（即δ-&gt;0）就可以检测出所发送的帧是否遇到了碰撞</li>
+<li>共享总线以太网的端到端往返时间<code>2τ</code>被称为<code>争用期</code>或<code>碰撞窗口</code></li>
+<li>若在时间2τ内未检测到碰撞就可以认定该次发送不再会发生碰撞</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/85b95baf13205ac8.png"></p>
+<h3 id="共享式以太网的最小帧长和最大帧长"><a href="#共享式以太网的最小帧长和最大帧长" class="headerlink" title="共享式以太网的最小帧长和最大帧长"></a>共享式以太网的最小帧长和最大帧长</h3><ol>
+<li>最小帧长</li>
+</ol>
+<ul>
+<li><p>最小帧长 &#x3D; 数据传输速率 * 争用期2τ</p>
+</li>
+<li><p>为了确保共享总线以太网上的每个站点在发送完一个完整的帧之前能够检测出是否发生了碰撞，帧的发送时延就不能少于共享总线以太网端到端的往返时间，即2τ</p>
+</li>
+<li><p>对于10Mb&#x2F;s的共享总线以太网，其争用期2τ的值规定为51.2μs，因此其最小帧长为512b，即64B</p>
+</li>
+<li><p>若遭遇碰撞，则一定发生在帧的前64B之内，因此，若接收点收到长度小于64B的帧，就可以判定这是一个遭遇了碰撞而异常终止的无效帧，将其丢弃即可</p>
+</li>
+</ul>
+<ol start="2">
+<li>最大帧长</li>
+</ol>
+<ul>
+<li>一般来说，帧的数据载荷长度应远大于帧首部和尾部的总长度，这样可以提升帧的传输效率</li>
+<li>若不限制数据载荷长度的上限，令帧的长度过长，也会产生一些问题，例如长期占用总线，某站点缓冲区溢出等</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/f1dd310ae5692084.png"></p>
+<h3 id="共享式以太网的退避算法"><a href="#共享式以太网的退避算法" class="headerlink" title="共享式以太网的退避算法"></a>共享式以太网的退避算法</h3><ul>
+<li>又称截断二进制指数退避算法</li>
+<li>退避时间 &#x3D; 基本退避时间（即争用期2τ） * 随机数r（r从离散的整数集合中[0,1…2^k^-1]随机挑选一个数，k &#x3D; min[重传次数, 10]）</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/65780bdc31adfa87.png"></p>
+<ul>
+<li>若连续发生多次的碰撞，表明可能有多个站点在竞争信道，使用上述的退避算法可以令重传需要推迟的平均时间随着重传次数增加而延长，从而减小发生碰撞的概率</li>
+<li>当重传次数达16次仍未成功时，应放弃重传并向高层汇报</li>
+</ul>
+<h3 id="共享式以太网的信道利用率"><a href="#共享式以太网的信道利用率" class="headerlink" title="共享式以太网的信道利用率"></a>共享式以太网的信道利用率</h3><p><img src="https://s3.bmp.ovh/imgs/2023/04/28/0d22b9a2ecb137c7.png"></p>
+<h3 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h3><ul>
+<li><p>利用网桥在数据链路层扩展共享式以太网</p>
+<ul>
+<li>利用网桥可将两个或多个的以太网连接起来，成为一个覆盖范围更大的以太网，而原来的每个以太网都称为一个<strong>网段</strong></li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/2c6443131d1a02a5.png"></p>
+</li>
+<li><p>网桥可以识别帧的结构</p>
+</li>
+<li><p>可以根据帧首部中的目的Mac地址和网桥自身的帧转发表来转发或丢弃所收到的帧</p>
+</li>
+</ul>
+<ol>
+<li>A向D发送单播帧（不同网段）</li>
+</ol>
+<ul>
+<li>同一网段的根据MAC地址发现不是自己的帧，将其丢弃</li>
+<li>到达网桥处的帧根据网桥转发表找到转发接口</li>
+<li>通过接口顺利转发到目的站点</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/2fd8576e579f9023.png"></p>
+<ol start="2">
+<li>A向C发送单播帧（同一网段）</li>
+</ol>
+<ul>
+<li>同一网段的根据MAC地址发现是否属于自己的帧，是则接收，否则丢弃</li>
+<li>到达网桥处的帧根据网桥转发表找到转发接口，发现无需转发，因此丢弃</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/fa55e50511051210.png"></p>
+<ol start="3">
+<li>发送广播帧</li>
+</ol>
+<ul>
+<li>所有站点均会接收该广播帧</li>
+<li>到达网桥处的帧无需查找转发表，而是会通过除接收该帧接口外的其他接口转发该广播帧</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/28/c746a1e4c9dca479.png"></p>
+<h3 id="透明网桥的自学习和转发帧"><a href="#透明网桥的自学习和转发帧" class="headerlink" title="透明网桥的自学习和转发帧"></a>透明网桥的自学习和转发帧</h3><ul>
+<li><p>透明网桥通过<code>自学习</code>算法建立转发表</p>
+</li>
+<li><p>透明网桥中的<code>透明</code>，是指以太网中各网桥对于各站点而言是看不见的</p>
+</li>
+<li><p>透明网桥通过自学习算法基于以太网中各站点间的相互通信逐步建立起自己的转发表</p>
+<ul>
+<li>网桥收到帧后进行登记（即自学习）。登记内容为帧的源MAC地址和进入网桥的接口号</li>
+<li>网桥根据帧的目的MAC地址和网桥转发表对帧进行转发，其可能出现以下三种情况<ol>
+<li><code>明确转发</code>：网桥清楚知道应从哪个接口进行转发</li>
+<li><code>盲目转发</code>：网桥转发表中无登记，网桥无法知道应从哪个接口进行转发，因此只能从进入接口外的其他所有接口都进行转发</li>
+<li><code>丢弃</code>：网桥知道无需转发帧，直接丢弃</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>若网桥收到有误码的帧，直接丢弃</li>
+<li>若网桥收到无误码的广播帧，无需查表，直接从进入接口外的其他所有接口进行转发</li>
+<li>转发表中的每条记录都是有有效时间的，到期自动删除。因为各站点MAC地址和网桥接口的对应关系并不是永久性的，例如某个站点更换了网卡，其MAC地址就会改变</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/29/f61486d1bd99ed0f.png"></p>
+</li>
+</ul>
+<h3 id="透明网桥的生成树协议STP"><a href="#透明网桥的生成树协议STP" class="headerlink" title="透明网桥的生成树协议STP"></a>透明网桥的生成树协议STP</h3><ul>
+<li><p>为了提高以太网的可靠性，有时需要在两个以太网之间使用多个透明网桥来提供冗余链路</p>
+</li>
+<li><p>在增加冗余链路提高以太网可靠性的同时，却给网络引入了环路</p>
+</li>
+<li><p>网络中的广播帧将在环路中永久兜圈，造成广播帧充斥整个网络，浪费了网络资源，使得网络中各主机间无法正常通信</p>
+</li>
+<li><p>为避免广播帧在环路中兜圈，透明网桥利用<code>生成树协议（STP）</code>，可以在增加冗余链路提高网络可靠性的同时，又避免环路带来的问题</p>
+<ul>
+<li>不管网桥之间连接成了怎样复杂的带环拓扑，网桥之间通过交互网桥协议单元（BPDU），找出原网络拓扑的一个连通子集（即生成树），在这个子集里整个连通的网络不存在环路</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/29/f4e7e6c1b9151972.png"></p>
+<ul>
+<li>当首次连接网桥或网络拓扑发生变化时（认为改变或出现故障），网桥都会重新构造生成树，以确保网络的连通</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/29/676ac6bf7ff548a7.png"></p>
+<h2 id="交换式以太网"><a href="#交换式以太网" class="headerlink" title="交换式以太网"></a>交换式以太网</h2><ul>
+<li>仅使用交换机而不使用集线器的以太网就是交换式以太网</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/29/ee160e14618cb0d2.png"></p>
+<h3 id="以太网交换机"><a href="#以太网交换机" class="headerlink" title="以太网交换机"></a>以太网交换机</h3><ul>
+<li>本质上是多接口的网桥</li>
+<li>交换机的每个接口可以连接计算机，也可以连接集线器或另一个交换机<ul>
+<li>当连接的是计算机或交换机时，工作在全双工方式，并能在自身内部同时连通多对接口，无需使用CSMA&#x2F;CD协议</li>
+<li>当连接的是集线器时，工作在半双工方式，需要使用CSMA&#x2F;CD协议</li>
+</ul>
+</li>
+<li>一般交换机都采用“存储转发”方式；为减少转发时延，某些交换机采用了直通交换方式</li>
+<li>采用<code>直通交换</code>方式的交换机，在接收帧的同时就立即按帧的目的MAC地址决定该帧的转发接口，然后通过其内部基于硬件的交叉矩阵进行转发，而不必进行缓存<ul>
+<li>直通交换时延非常小</li>
+<li>直通交换不检查差错就直接转发出去，有可能转发一些无用帧</li>
+</ul>
+</li>
+</ul>
+<h2 id="共享式以太网与交换式以太网的对比"><a href="#共享式以太网与交换式以太网的对比" class="headerlink" title="共享式以太网与交换式以太网的对比"></a>共享式以太网与交换式以太网的对比</h2><ul>
+<li><p>本质上可以理解为集线器与交换机的对比</p>
+<ul>
+<li>集线器扩大了广播域，扩大了碰撞域</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/29/fd13bc0be4f367d0.png"></p>
+<ul>
+<li>交换机扩大了广播域，隔离了碰撞域</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/04/29/7ca59bffa42f4128.png"></p>
+</li>
+<li><p>交换式以太网网络性能远高于共享式以太网，所以集线器早已被交换机替代</p>
+</li>
+</ul>
+<h2 id="以太网MAC帧格式"><a href="#以太网MAC帧格式" class="headerlink" title="以太网MAC帧格式"></a>以太网MAC帧格式</h2><p><img src="https://s3.bmp.ovh/imgs/2023/05/04/8fe9a89c0a185475.png"></p>
+<p>接收方可能收到的无效MAC帧包括：</p>
+<ul>
+<li>MAC帧长度不是整数个字节</li>
+<li>通过MAC帧的FCS字段的值检测出帧有误码</li>
+<li>MAC帧的长度不在64~1518字节之间</li>
+</ul>
+<p>接收方收到无效的MAC帧时，就简单将其丢弃，以太网的数据链路层没有重传机制</p>
+<h2 id="虚拟局域网VLAN"><a href="#虚拟局域网VLAN" class="headerlink" title="虚拟局域网VLAN"></a>虚拟局域网VLAN</h2><p>VLAN（Virtual Local Area Network）是一种将局域网内的设备划分为与物理位置无关的逻辑组技术，这些逻辑组有某些共同的需求</p>
+<h3 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h3><ul>
+<li>IEEE 802.1Q帧（Dot One Q帧）对以太网的MAC帧格式进行了扩展，插入了4字节的VLAN标记</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/04/2578a4062e217fd5.png"></p>
+<ul>
+<li><p>VLAN标记的最后12比特称为VLAN标识符<code>VID</code>，其唯一标志了以太网帧属于哪个VLAN</p>
+<ul>
+<li>VID取值0~4095</li>
+<li>0和4095都不用来表示VLAN，故用于表示VLAN的有效取值范围为1~4094</li>
+</ul>
+</li>
+<li><p>802.1Q帧是由交换机来处理的，而不是用户主机来处理的</p>
+<ul>
+<li>当交换机收到普通的以太网帧时，会将其插入4字节的VLAN标记转变为802.1Q帧，称为“<code>打标签</code>”</li>
+<li>当交换机转发802.1Q帧时，可能会删除其4字节VLAN标记转变为普通以太网帧，称为“<code>去标签</code>”</li>
+</ul>
+</li>
+<li><p>交换机端口类型</p>
+<ul>
+<li><strong>Access</strong><ul>
+<li>连接用户计算机</li>
+<li>只能属于一个VLAN</li>
+<li>PVID与端口所属VLAN的ID相同，默认为1</li>
+<li>接收处理：一般只接收未打标签的普通以太网帧，并给其打标签</li>
+<li>发送处理：若帧中VID等于端口PVID，则去标签后转发；否则丢弃</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/05/5f2b4624de67676c.png" alt="主机A发送广播"></p>
+<ul>
+<li><p><strong>Trunk</strong></p>
+<ul>
+<li>交换机之间或交换机与路由器之间的连接</li>
+<li>可以属于多个VLAN</li>
+<li>用户可以设置PVID，默认为1</li>
+<li>接收处理：<ul>
+<li>接收已打标签的帧</li>
+<li>接收未打标签的帧，根据端口的PVID值给帧打标签</li>
+</ul>
+</li>
+<li>发送处理：<ul>
+<li>帧中VID等于端口PVID，则去标签后转发</li>
+<li>不等则直接转发</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/05/ec6763971abb6553.png" alt="主机C发送广播"></p>
+</li>
+<li><p><strong>Hybrid</strong></p>
+<ul>
+<li><p>交换机之间、交换机与路由器、交换机与用户计算机之间的连接</p>
+</li>
+<li><p>可以属于多个VLAN</p>
+</li>
+<li><p>用户可以设置PVID，默认为1</p>
+</li>
+<li><p>接收处理：</p>
+<ul>
+<li>接收已打标签的帧</li>
+<li>接收未打标签的帧，根据端口的PVID值给帧打标签</li>
+</ul>
+</li>
+<li><p>发送处理：</p>
+<ul>
+<li>查看数据帧中VID是否在端口的去标签列表中<ul>
+<li>若存在，则去标签后转发</li>
+<li>不存在，则直接转发</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/05/8223c8db7036bd05.png" alt="主机A向主机B发送广播"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="无线局域网WLAN"><a href="#无线局域网WLAN" class="headerlink" title="无线局域网WLAN"></a>无线局域网WLAN</h2><p>WLAN（Wireless Local Area Network）</p>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ol>
+<li><p>有固定基础设施的802.11无线局域网</p>
+<ul>
+<li>AP：Access Point 接入点</li>
+<li>BSS：Basic Service Set 基础服务集</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/05/0ad81cba7458174f.png"></p>
+</li>
+<li><p>无固定基础设施移动自组织网络</p>
+<p>自组织网络没有基本服务集中的AP，而是由一些平等状态的移动站相互通信组成的临时网络，各结点地位平等，中间结点均为转发结点，因此都具有路由器的功能</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/05/f7902298dd9430ce.png"></p>
+</li>
+</ol>
+<h3 id="CSMA-x2F-CA协议"><a href="#CSMA-x2F-CA协议" class="headerlink" title="CSMA&#x2F;CA协议"></a>CSMA&#x2F;CA协议</h3><p>802.11无线局域网采用了CSMA&#x2F;CA协议，即<code>载波监听多址接入/碰撞避免</code></p>
+<p>注意的是CA并不能避免所有碰撞，而是尽量减少发生碰撞的概率</p>
+<h4 id="基本工作原理"><a href="#基本工作原理" class="headerlink" title="基本工作原理"></a>基本工作原理</h4><ul>
+<li><p>等待DIFS：主要是考虑到可能有其他站的高优先级帧需要发送</p>
+</li>
+<li><p>等待SIFS：短帧间间隔。</p>
+</li>
+<li><p>NAV：指出了完成这次帧的传送且信道转入空闲状态所需的时间</p>
+</li>
+</ul>
+<p>目的站收到源站发送的数据帧后，等待SIFS间隔后发送确认帧，这期间信道忙，其他站要发送只能推迟;当该次传输完成后，其他站需要等待DIFS间隔和随机退避时间后再发送帧</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/06/6e5eaabe81901f3c.png" alt="帧发送过程"></p>
+<p>为了进一步降低发生碰撞的概率，802.11无线局域网允许源站对信道进行<code>预约</code></p>
+<ul>
+<li>RTS：短的控制帧，包括源地址，目的地址和本次通信（包括目的站发回确认帧所需的时间）所需的持续时间</li>
+<li>CTS：短的响应控制帧，包括本次通信所需的持续时间</li>
+</ul>
+<p>RTS若发生碰撞，源站就不可能接收到CTS帧，此时源站就会执行退避算法重传RTS帧；虽然进行信道预约会带来额外的开销，但由于两个帧都很短，且发生碰撞概率，碰撞产生及其自身的开销都很小，因此为降低碰撞概率。这点小代价还是值得的</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/06/10d9df0011a6f177.png" alt="帧预约后发送过程"></p>
+<h4 id="退避算法"><a href="#退避算法" class="headerlink" title="退避算法"></a>退避算法</h4><ul>
+<li>站点会为退避计时器设置一个随机的退避时间<ul>
+<li>当退避时间减小到0时，就开始发送</li>
+<li>当退避时间未到0而信道又转为忙态时，此时需要冻结退避计时器的值，重新等待信道转为空闲，再经过帧间间隔DIFS后，继续启动退避计时器</li>
+</ul>
+</li>
+</ul>
+<p>A开始发送帧，BCD也想发送，发现信道处于忙状态，等待DIFS间隔后，启动退避计时器；假如C的退避时间最短，此时信道也处于空闲状态，C立即发送帧，BD对应退避时间冻结，等待信道转为空闲及DIFS间隔后，退避计时器解冻，重新开始计时…然后依次类推（如图所示）</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/06/f23b1fb076a8e8c0.png" alt="退避算法图解"></p>
+<h3 id="MAC帧"><a href="#MAC帧" class="headerlink" title="MAC帧"></a>MAC帧</h3><ul>
+<li>数据帧<ul>
+<li>用于站点间传输数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/06/a5c6f162a699d2f4.png" alt="数据帧格式"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/06/349fa5794d84f03c.png"></p>
+<ul>
+<li>控制帧<ul>
+<li>通常与数据帧搭配使用</li>
+<li>负责区域清空，虚拟载波监听的维护及信道的接入，并于收到数据帧时予以确认</li>
+<li>ACK帧、RTS帧及CTS帧等都属于该范畴</li>
+</ul>
+</li>
+<li>管理帧<ul>
+<li>用于加入或退出无线网络，以及处理AP之间连接的转移事宜</li>
+<li>信标帧、关联请求帧以及身份认证帧等都属于管理帧</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/valine/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '1uVrJv2imXV46a6u4MUIsl8O-gzGzoHsz',
+        appKey: 'YQCYnveHLoJ2HodIddRRgmqI',
+        serverURLs: '',
+        notify: '' === 'true',
+        verify: '' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '昵称填写qq可以显示qq头像和昵称哦~'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/06/01/ji-suan-ji-wang-luo-ji-chu-xi-lie-yi/">
+                    <div class="card-image">
+                        
+                        <img src="https://images.unsplash.com/photo-1545569310-f6d4b4d7ede9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwxOHx8bmV0d29ya3xlbnwwfHx8fDE2ODE2NDkzNDU&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="计算机网络基础系列（一）">
+                        
+                        <span class="card-title">计算机网络基础系列（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            计算机网络基础知识汇总
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    关于学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/01/xu-ni-ji-lei-jia-zai-ji-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/featureimages/7.jpg" class="responsive-img" alt="深入理解Java虚拟机之类加载">
+                        
+                        <span class="card-title">深入理解Java虚拟机之类加载</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E5%88%97/" class="post-category">
+                                    深入理解Java虚拟机系列
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                        <span class="chip bg-color">深入理解Java虚拟机</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="4965675848"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">Zhou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">113.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "10";
+                        var startDate = "7";
+                        var startHour = "19";
+                        var startMinute = "30";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Zhouwyu/Zhouwyu.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:laogew6@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1020328911" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1020328911" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

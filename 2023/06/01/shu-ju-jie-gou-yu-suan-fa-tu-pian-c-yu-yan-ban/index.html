@@ -1,0 +1,1949 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="数据结构与算法-图篇（C语言版）, ZHOU">
+    <meta name="description" content="算法学习记录">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>数据结构与算法-图篇（C语言版） | ZHOU</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/matery.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/css/reward.css">
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ZHOU</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/movies" class="waves-effect waves-light">
+      
+      <i class="fas fa-film" style="zoom: 0.6;"></i>
+      
+      <span>Movies</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/books" class="waves-effect waves-light">
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>Books</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ZHOU</div>
+        <div class="logo-desc">
+            
+            欢迎访问LRZ的博客
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/movies" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-film"></i>
+			
+			Movies
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/books" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-book"></i>
+			
+			Books
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHw0MHx8R3JhcGh8ZW58MHx8fHwxNjg1MjYzNjY5fDA&ixlib=rb-4.0.3&q=80&w=1080')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">数据结构与算法-图篇（C语言版）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">数据结构与算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                关于学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-06-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>一个一维数组存放顶点，一个二维数组存放边，以无向图为例</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;malloc.h></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> VertexType<span class="token punctuation">;</span> <span class="token comment">// 顶点类型用户可自定义</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span> <span class="token comment">// 边上的权值类型用户可自定义</span>
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">100</span> </span><span class="token comment">// 最大顶点数，可自定义</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">INFINITY</span> <span class="token expression"><span class="token number">65535</span> </span><span class="token comment">// 用65535表示无穷</span></span>
+<span class="token comment">// 图的邻接矩阵结构</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    VertexType vex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 一维数组存放顶点集</span>
+    EdgeType arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 二维数组存放边，邻接矩阵</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span> <span class="token comment">// 图中当前顶点数和边数</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">createMGraph</span><span class="token punctuation">(</span>MGraph <span class="token operator">*</span>G<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入顶点数和边数：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>G<span class="token operator">-></span>numNodes<span class="token punctuation">,</span> <span class="token operator">&amp;</span>G<span class="token operator">-></span>numEdges<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 初始化顶点，建立顶点表</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>vex<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 邻接矩阵初始化</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 默认所有均为无穷值</span>
+            G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> INFINITY<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 读取边数，建立边表</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> G<span class="token operator">-></span>numEdges<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入边（vi, vj）上的下标i，下标j，和权w\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d,%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>j<span class="token punctuation">,</span> <span class="token operator">&amp;</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 无向图对称</span>
+        G<span class="token operator">-></span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">;</span>
+        G<span class="token operator">-></span>arc<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>一个一维数组存储顶点，再利用一个单链表存储对应的邻接点，同样以无向图为例</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">char</span> VertexType<span class="token punctuation">;</span> <span class="token comment">// 顶点类型用户可自定义</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span> <span class="token comment">// 边上的权值类型用户可自定义</span>
+
+<span class="token comment">// 边表结点</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// 邻接点域，存储该顶点对应的下标</span>
+    <span class="token keyword">int</span> adjvex<span class="token punctuation">;</span>
+    <span class="token comment">// 用于存储权值，对于非网图可不需要</span>
+    EdgeType info<span class="token punctuation">;</span>
+    <span class="token comment">// 链域，指向下一个邻接点</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>EdgeNode<span class="token punctuation">;</span>
+
+<span class="token comment">// 顶点表结点</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VertexNode</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 顶点域，存储顶点信息</span>
+    VertexType data<span class="token punctuation">;</span>
+    <span class="token comment">// 边表头指针</span>
+    EdgeNode <span class="token operator">*</span>firstEdge<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>VertexNode<span class="token punctuation">,</span> AdjList<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 图的邻接表结构</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    AdjList adjList<span class="token punctuation">;</span>
+    <span class="token comment">// 当前顶点数和边数</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>GraphAdjList<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">createGraphAdjList</span><span class="token punctuation">(</span>GraphAdjList <span class="token operator">*</span>G<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>k<span class="token punctuation">;</span>
+    EdgeNode <span class="token operator">*</span>e<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入顶点数和边数：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>G<span class="token operator">-></span>numNodes<span class="token punctuation">,</span> <span class="token operator">&amp;</span>G<span class="token operator">-></span>numEdges<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 读取顶点信息，建立顶点表</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 顶点信息输入</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>G<span class="token operator">-></span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 边表初始化置为空</span>
+        G<span class="token operator">-></span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 建立边表</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> G<span class="token operator">-></span>numEdges<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入边（vi,vj）上的顶点序号：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">,</span><span class="token operator">&amp;</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 申请内存空间，生成边结点</span>
+        e <span class="token operator">=</span> <span class="token punctuation">(</span>EdgeNode <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span> <span class="token punctuation">(</span>EdgeNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 邻接点序号信息</span>
+        e<span class="token operator">-></span>adjvex <span class="token operator">=</span> j<span class="token punctuation">;</span>
+        <span class="token comment">// 将新建结点的指针指向当前顶点指向的结点（类似头插法）</span>
+        e<span class="token operator">-></span>next <span class="token operator">=</span> G<span class="token operator">-></span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span>
+        <span class="token comment">// 将当前顶点指向新建的结点</span>
+        G<span class="token operator">-></span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge <span class="token operator">=</span> e<span class="token punctuation">;</span>
+        <span class="token comment">// 因为是无向图，所以一条边对应的是两个顶点，故操作与上述基本类似</span>
+        e <span class="token operator">=</span> <span class="token punctuation">(</span>EdgeNode <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span> <span class="token punctuation">(</span>EdgeNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        e<span class="token operator">-></span>adjvex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        e<span class="token operator">-></span>next <span class="token operator">=</span> G<span class="token operator">-></span>adjList<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span>
+        G<span class="token operator">-></span>adjList<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><p>为避免某些结点被访问多次或无人问津，故设置访问数组visited[n]，初始值为0，访问过后设置为1</p>
+<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>有点类似于树的前序遍历</p>
+<ul>
+<li><p>邻接矩阵</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;malloc.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqoai.h></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> VertexType<span class="token punctuation">;</span> <span class="token comment">// 顶点类型用户可自定义</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span> <span class="token comment">// 边上的权值类型用户可自定义</span>
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">9</span> </span><span class="token comment">// 最大顶点数，可自定义</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">define</span> <span class="token macro-name">INFINITY</span> <span class="token expression"><span class="token number">65535</span> </span><span class="token comment">// 用65535表示无穷</span></span>
+Boolean visited<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 访问标志的数组</span>
+
+<span class="token comment">// 邻接矩阵的定义</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">Vertex</span><span class="token punctuation">&#123;</span>
+    VertexType vex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    EdgeType arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MGragh<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>MGragh G<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> j<span class="token punctuation">;</span>
+    visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span> <span class="token comment">// 访问过的设置为 TRUE</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>vex<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印出来，表示访问到了</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 对未访问过的邻接点递归调用</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 深度遍历</span>
+<span class="token keyword">void</span> <span class="token function">DFSTraverse</span><span class="token punctuation">(</span>MGragh G<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token comment">// 初始化访问数组，默认均为FALSE，即未被访问过</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 未访问过的顶点就调用DFS，若为连通图仅执行一次</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>邻接表</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;malloc.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqoai.h></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> VertexType<span class="token punctuation">;</span> <span class="token comment">// 顶点类型用户可自定义</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span> <span class="token comment">// 边上的权值类型用户可自定义</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">9</span></span></span>
+
+Boolean visited<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> adjVex<span class="token punctuation">;</span>
+    EdgeType info<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>EdgeNode<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VertexNode</span><span class="token punctuation">&#123;</span>
+    VertexType data<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>firstEdge<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>VertexNode<span class="token punctuation">,</span> AdjList<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    AdjList adjList<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>GraphAdjList<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 用于遍历边表结点的指针</span>
+    EdgeNode <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// p指向当前顶点指向的下一个结点</span>
+    p <span class="token operator">=</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 对未被访问过的结点递归调用</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>p<span class="token operator">-></span>adjVex<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>GL<span class="token punctuation">,</span> p<span class="token operator">-></span>adjVex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 访问过的就沿边表往后走</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">DFSTraverse</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numNodes <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">DFS</span><span class="token punctuation">(</span>GL<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><p>有点类似树的层序遍历，利用到辅助队列</p>
+<ul>
+<li><p>邻接矩阵</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqoai.h></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> VertexType<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">9</span></span></span>
+
+Boolean visited<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VerTex</span><span class="token punctuation">&#123;</span>
+    VertexType vertex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    EdgeType arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numVexs<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+
+<span class="token comment">// 队列的结构（顺序表和链表的实现不一样，可查看之前线性结构部分）</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">Queue</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token operator">*</span>Queue<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">initQueue</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">EnQueue</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">DeQueue</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+Boolean <span class="token function">QueueEmpty</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">BFSTraverse</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">;</span>
+    Queue Q<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVexs<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 初始化辅助队列</span>
+    <span class="token function">initQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVexs<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 未被访问过的先访问后入队</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>vertex<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 队列非空则出队，然后寻找出队结点的邻接点</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">QueueEmpty</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">DeQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 邻接点边存在且未被访问过，则也访问后入队（必须判断边存在，若只判断visited数组可能会判断错误）</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numVexs<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>visited<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        visited<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+                        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> G<span class="token punctuation">.</span>vertex<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">&#125;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>邻接表</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 队列的结构（顺序表和链表的实现不一样，可查看之前线性结构部分）</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">Queue</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token operator">*</span>Queue<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">initQueue</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">EnQueue</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">DeQueue</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+Boolean <span class="token function">QueueEmpty</span><span class="token punctuation">(</span>Queue <span class="token operator">*</span>Q<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">BFSTraverse</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    EdgeNode <span class="token operator">*</span>p<span class="token punctuation">;</span>
+    Queue Q<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i  <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FALSE<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 初始化辅助队列</span>
+    <span class="token function">initQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 访问结点</span>
+        visited<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 访问过后的就入队</span>
+        <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 当队列非空时，就出队</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">QueueEmpty</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">DeQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 寻找出队节点的邻接节点</span>
+            p <span class="token operator">=</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span>
+            <span class="token comment">// 当邻接点未被访问过就访问后入队</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>p<span class="token operator">-></span>adjVex<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    visited<span class="token punctuation">[</span>p<span class="token operator">-></span>adjVex<span class="token punctuation">]</span> <span class="token operator">=</span>  TRUE<span class="token punctuation">;</span>
+                    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> GL<span class="token punctuation">.</span>adjList<span class="token punctuation">[</span>p<span class="token operator">-></span>adjVex<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">EnQueue</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> p<span class="token operator">-></span>adjVex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>构成连通网的最小代价生成树成为最小生成树</p>
+<h3 id="普利姆（Prim）算法"><a href="#普利姆（Prim）算法" class="headerlink" title="普利姆（Prim）算法"></a>普利姆（Prim）算法</h3><p>从顶点触发，挑选两个顶点之间权值最小的边</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> VerTexType<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">9</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">INFINITY</span> <span class="token expression"><span class="token number">65535</span></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VerTex</span><span class="token punctuation">&#123;</span>
+    VerTexType vex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    EdgeType arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">MiniSpanTree_Prim</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> min<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">;</span>
+    <span class="token comment">// 保存相关顶点间边的权值点下标</span>
+    <span class="token keyword">int</span> adjvex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 保存相关顶点边的权值</span>
+    <span class="token keyword">int</span> lowcost<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 此处初始化权值为0，即从v0开始</span>
+    lowcost<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// v0顶点下标为0</span>
+    adjvex<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//循环除下标0之外的所有顶点，即v1,v2...</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 所有与v0相关的边的权值存入数组</span>
+        lowcost<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 初始化为全都是v0的下标</span>
+        adjvex<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 最小生成树操作</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 初始化最小权值为65535</span>
+        min <span class="token operator">=</span> INFINITY<span class="token punctuation">;</span>
+        <span class="token comment">// 顶点下标循环变量</span>
+        j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment">// 存储最小权值的顶点下标</span>
+        k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment">// 循环全部顶点</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 权值不为0且权值小于min，则当前的就是最小权值，赋给min（类似寻找最小值操作）</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                min <span class="token operator">=</span> lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token comment">// 存储最小权值的顶点下标</span>
+                k <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 打印当前顶点边中权值最小的边</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"(%d,%d)\n"</span><span class="token punctuation">,</span> adjvex<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 将当前顶点的权值更改为0，表示此顶点已加入最小生成树，该顶点的任务完成</span>
+        lowcost<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment">// 循环所有顶点</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 若下标为k的顶点各边权值小于此前这些未被加入生成树的顶点的权值</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 将较小的权值存入lowcost对应的下标位置</span>
+                lowcost<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token comment">// 将下标为k的顶点存入adjvex</span>
+                adjvex<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="克鲁斯卡尔（Kruskal）算法"><a href="#克鲁斯卡尔（Kruskal）算法" class="headerlink" title="克鲁斯卡尔（Kruskal）算法"></a>克鲁斯卡尔（Kruskal）算法</h3><p>从边出发，从上帝视觉挑选边权值最小的组成最小生成树，注意不要成环</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/29/199825b1405a1edb.png" alt="Edge边集数组示例"></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">9</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXEDGE</span> <span class="token expression"><span class="token number">15</span></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> VerTexType<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> EdgeType<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VerTex</span><span class="token punctuation">&#123;</span>
+    VerTexType vex<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    EdgeType arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+
+<span class="token comment">// 对边集数组Edge结构的定义</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> begin<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> end<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> weight<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>Edge<span class="token punctuation">;</span>
+
+<span class="token comment">// 查找连线顶点的尾部下标</span>
+<span class="token keyword">int</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>parent<span class="token punctuation">,</span> <span class="token keyword">int</span> f<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>parent<span class="token punctuation">[</span>f<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        f <span class="token operator">=</span> parent<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">MiniSpanTree_Kruskal</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>n<span class="token punctuation">,</span>m<span class="token punctuation">;</span>
+    <span class="token comment">// 定义边集数组，edge的结构为begin，end和weight</span>
+    Edge edges<span class="token punctuation">[</span>MAXEDGE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 用于判断边与边是否形成了环路（此处太妙了）</span>
+    <span class="token keyword">int</span> parent<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 此处省略将邻接矩阵G转化为边集数组Edges并按权由小到大排序的代码（形成的边表如上图）</span>
+
+    <span class="token comment">// 初始化数组值为0</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        parent<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 循环每一条边</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numEdges<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        n <span class="token operator">=</span> <span class="token function">Find</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>begin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        m <span class="token operator">=</span> <span class="token function">Find</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 若n!=m说明此此边没有与现有的生成树形成环路</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">!=</span> m<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 将此边的结尾顶点放入以起点为下标的parent中，表示此顶点已经在生成树的集合中</span>
+            parent<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> m<span class="token punctuation">;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"(%d,%d) %d\n"</span><span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>begin<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">,</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>weight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><h3 id="迪杰斯塔拉（Dijkstra）算法"><a href="#迪杰斯塔拉（Dijkstra）算法" class="headerlink" title="迪杰斯塔拉（Dijkstra）算法"></a>迪杰斯塔拉（Dijkstra）算法</h3><p>一步步求出顶点之间的最短路径，每一步都是基于前面已求出的最短路径基础上进行的，最终求得最远顶点的最短路径（以下算法只能实现无孤立点的图）</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">20</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXEDGE</span> <span class="token expression"><span class="token number">20</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">INFINITY</span> <span class="token expression"><span class="token number">65535</span></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> vexs<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+
+<span class="token comment">// 用于存储最短路径下标的数组</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> Patharc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 用于存储到各点最短路径的权值和</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> ShortPathTable<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// P[v]的值为前驱顶点v的下标，D[v]表示v0到v的最短路径权值和</span>
+<span class="token keyword">void</span> <span class="token function">ShortestPath_Dijkstra</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span> <span class="token keyword">int</span> v0<span class="token punctuation">,</span> Patharc <span class="token operator">*</span>P<span class="token punctuation">,</span> ShortPathTable <span class="token operator">*</span>D<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> v<span class="token punctuation">,</span>w<span class="token punctuation">,</span>k<span class="token punctuation">,</span>min<span class="token punctuation">;</span>
+    <span class="token comment">// final数组的作用类似最小生成树中的lowcost，当值为0时表示顶点还没加入最短路径，当值为1时表明顶点已经加入最短路径</span>
+    <span class="token keyword">int</span> final<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 初始化数据</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>v<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>v<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span>v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 默认都未加入最短路径</span>
+        final<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment">// 从顶点v0开始，将与v0有连线的顶点权值存入数组</span>
+        <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>v0<span class="token punctuation">]</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 默认全为-1，即目前还没有路径</span>
+        <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 从v0开始，故v0到v0自身权值为0</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v0<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// v0默认加入最短路径</span>
+    final<span class="token punctuation">[</span>v0<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// 开始求最短路径，每次求得v0到某个顶点v的最短路径</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>v <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        min <span class="token operator">=</span> INFINITY<span class="token punctuation">;</span>
+        <span class="token comment">// 寻找离v0顶点最近的顶点</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 未加入最短路径且其离v0最近（即权值最小），就交换并记录</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>final<span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                k <span class="token operator">=</span> w<span class="token punctuation">;</span>
+                min <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 找到后加入最短路径</span>
+        final<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment">// 从找到的顶点再次出发，继续寻找权值和最小的顶点</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 未加入最短路径且从上面已加入最短路径的顶点再出发，找权值和最小的顶点</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>final<span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> min <span class="token operator">+</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 若有更小的，更新数组里的权值</span>
+                <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> min <span class="token operator">+</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token comment">// 记录顶点vw的前驱顶点的下标k</span>
+                <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="弗洛伊德（Floyd）算法"><a href="#弗洛伊德（Floyd）算法" class="headerlink" title="弗洛伊德（Floyd）算法"></a>弗洛伊德（Floyd）算法</h3><p>所有顶点到所有顶点的最短路径</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/30/e475a4ebaee89ba7.png" alt="D数组和P数组示例"></p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/30/b1c12f5947bdd770.png" alt="以v1为中转结点示例"></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">20</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXEDGE</span> <span class="token expression"><span class="token number">20</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">INFINITY</span> <span class="token expression"><span class="token number">65535</span></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> vexs<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> arc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+
+<span class="token comment">// 用于存储最短路径下标的数组</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> Patharc<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 用于存储到各点最短路径的权值和</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> ShortPathTable<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Floyd算法，求网图G中各顶点v到其余顶点w的最短路径P[v][w]及带权长度D[v][w]</span>
+<span class="token keyword">void</span> <span class="token function">ShortestPath_Floyd</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span> Patharc <span class="token operator">*</span>P<span class="token punctuation">,</span> ShortPathTable <span class="token operator">*</span>D<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> v<span class="token punctuation">,</span> w<span class="token punctuation">,</span> k<span class="token punctuation">;</span>
+    <span class="token comment">// 初始化</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 将邻接矩阵中的权值赋给D数组，初始化P数组</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> G<span class="token punctuation">.</span>arc<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 核心算法，k代表的是中转顶点的下标, v为起始顶点, w为终止顶点</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span>w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 若通过中转顶点k到达的路径长度要比直接到达的要小，则将当前的权值设置为更小的一个</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token comment">// 路径设置为经过下标为k的顶点</span>
+                    <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s3.bmp.ovh/imgs/2023/05/30/f45084249c4a08b8.png" alt="最终矩阵形成示例(结合下述代码理解)"></p>
+<p>通过P数组得出最短路径（此段代码还没有弄懂…）：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"各顶点间最短路径如下：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> v <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>w <span class="token operator">=</span> v<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> G<span class="token punctuation">.</span>numNodes<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"v%d-v%d  weight:%d"</span><span class="token punctuation">,</span> v<span class="token punctuation">,</span> w<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 获得第一个路径顶点下标</span>
+            k <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// 打印源点</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"path:%d"</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 若路径顶点下标不是终点</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>k<span class="token operator">!=</span>w<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 打印路径顶点</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"-> %d"</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 获得下一个路径顶点下标</span>
+                k <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// 打印终点</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">数据结构与算法</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/valine/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '1uVrJv2imXV46a6u4MUIsl8O-gzGzoHsz',
+        appKey: 'YQCYnveHLoJ2HodIddRRgmqI',
+        serverURLs: '',
+        notify: '' === 'true',
+        verify: '' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '昵称填写qq可以显示qq头像和昵称哦~'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/06/01/shu-ju-jie-gou-yu-suan-fa-shu-pian-c-yu-yan-ban/">
+                    <div class="card-image">
+                        
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHw1Nnx8Q29kZXxlbnwwfHx8fDE2ODQ3NjM2NjZ8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="数据结构与算法-树篇（C语言版）">
+                        
+                        <span class="card-title">数据结构与算法-树篇（C语言版）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            算法学习记录
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    关于学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">数据结构与算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/01/cao-zuo-xi-tong-ji-chu/">
+                    <div class="card-image">
+                        
+                        <img src="https://images.unsplash.com/photo-1633119747461-79f45df1913c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwzMnx8U3lzdGVtfGVufDB8fHx8MTY4MzYzODMyOQ&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="操作系统基础">
+                        
+                        <span class="card-title">操作系统基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            操作系统基础知识汇总
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    关于学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="4965675848"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <a href="/about" target="_blank">Zhou</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">113.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "10";
+                        var startDate = "7";
+                        var startHour = "19";
+                        var startMinute = "30";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Zhouwyu/Zhouwyu.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:laogew6@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1020328911" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1020328911" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
