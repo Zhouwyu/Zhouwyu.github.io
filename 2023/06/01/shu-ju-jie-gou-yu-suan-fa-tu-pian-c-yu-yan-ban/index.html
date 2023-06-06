@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    22 分
                 </div>
                 
 
@@ -986,10 +986,237 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>若有满足从顶点vi到顶点vj有一条路径，则在顶点序列中顶点vi必在vj之前，我们称这样的顶点序列为一个拓扑序列</p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>在一个表示工程的有向图中，用顶点表示活动，用弧表示活动之间的优先关系，这样的有向图为顶点表示活动的网，我们称为<code>AOV网</code></p>
+<p>若有满足从顶点vi到顶点vj有一条路径，则在顶点序列中顶点vi必在vj之前，我们称这样的顶点序列为一个拓扑序列</p>
 <p>所谓的拓扑排序，其实就是对一个有向图构造拓扑序列的过程</p>
 <p>基本思路：从AOV网中选择一个入度为0的顶点输出，然后删去此顶点及以此顶点为尾的弧，重复上述步骤直至输出全部顶点或AOV网中不再存在入度为0的顶点</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>利用栈进行操作：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//</span>
+<span class="token comment">// Created by zhou on 2023/6/4.</span>
+<span class="token comment">// 拓扑排序</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdlib.h"</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">20</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ERROR</span> <span class="token expression"><span class="token number">0</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">OK</span> <span class="token expression"><span class="token number">1</span></span></span>
+
+<span class="token comment">// 边表节点</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// 邻接点域，存储该顶点对应的下标</span>
+    <span class="token keyword">int</span> adjvex<span class="token punctuation">;</span>
+    <span class="token comment">// 权值</span>
+    <span class="token keyword">int</span> weight<span class="token punctuation">;</span>
+    <span class="token comment">// 链域，指向下一个邻接点</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>EdgeNode<span class="token punctuation">;</span>
+
+<span class="token comment">// 顶点表结点</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VertexNode</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// 入度</span>
+    <span class="token keyword">int</span> in<span class="token punctuation">;</span>
+    <span class="token comment">// 顶点信息</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">;</span>
+    <span class="token comment">// 边表头指针</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>firstEdge<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>VertexNode<span class="token punctuation">,</span> AdjList<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    AdjList adjList<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>graphAdjList<span class="token punctuation">,</span> <span class="token operator">*</span>GraphAdjList<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 拓扑排序
+ * @param GL 邻接表
+ * @return 若GL无回路，返回1，否则返回0
+ */</span>
+<span class="token keyword">int</span> <span class="token function">TopologicalSort</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 用于遍历邻接表的指针</span>
+    EdgeNode <span class="token operator">*</span>e<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>k<span class="token punctuation">,</span>gettop<span class="token punctuation">;</span>
+    <span class="token comment">// 栈指针域下标</span>
+    <span class="token keyword">int</span> top <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 统计输出的顶点个数</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 建栈用于将入度为0的顶点入栈</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>stack<span class="token punctuation">;</span>
+    <span class="token comment">// 分配栈空间</span>
+    stack <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>GL<span class="token operator">-></span>numNodes <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 遍历所有顶点，将顶点入度为0的入栈</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            stack<span class="token punctuation">[</span><span class="token operator">++</span>top<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 当栈指针下标不为0时，代表栈中有顶点</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>top <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 栈顶的顶点出栈</span>
+        gettop <span class="token operator">=</span> stack<span class="token punctuation">[</span>top<span class="token operator">--</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d->"</span><span class="token punctuation">,</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 记录下出栈的顶点数</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token comment">// 遍历此顶点的所有邻接点</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>e <span class="token operator">=</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span> e<span class="token punctuation">;</span> e <span class="token operator">=</span> e<span class="token operator">-></span>next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 将这些邻接点的入度减1（实际上就是断掉边）</span>
+            k <span class="token operator">=</span> e<span class="token operator">-></span>adjvex<span class="token punctuation">;</span>
+            <span class="token comment">// 若入度减少后刚好为0，则再将该顶点入栈</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">--</span>GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                stack<span class="token punctuation">[</span><span class="token operator">++</span>top<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 输出顶点数与总顶点数不一致，说明有环</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">)</span> <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h2><p>在一个表示工程的带权有向图中，用<strong>顶点表示事件</strong>，用有向<strong>边表示活动</strong>，用边上的权值表示活动的持续时间，这样的有向图边表示活动的网，我们称为<code>AOE网</code></p>
+<p>路径上各个活动所持续的时间之和称为路径长度，从源点到终点具有最大长度的路径叫关键路径，在关键路径上的活动叫做关键活动</p>
+<p>相关术语：</p>
+<ul>
+<li>事件最早发生时间etv</li>
+<li>事件最晚发生时间ltv</li>
+<li>活动最早开工时间ete</li>
+<li>活动最晚开工时间lte</li>
+</ul>
+<p>技巧：</p>
+<ul>
+<li>对顶点事件：从前往后取较大，从后往前取较小</li>
+<li>对弧活动：早头晚尾(晚尾减权值)</li>
+</ul>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//</span>
+<span class="token comment">// Created by zhou on 2023/6/6.</span>
+<span class="token comment">// 关键路径</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdlib.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stdio.h"</span></span>
+
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXVEX</span> <span class="token expression"><span class="token number">20</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ERROR</span> <span class="token expression"><span class="token number">0</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">OK</span> <span class="token expression"><span class="token number">1</span></span></span>
+
+<span class="token comment">// 边表节点</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// 邻接点域，存储该顶点对应的下标</span>
+    <span class="token keyword">int</span> adjvex<span class="token punctuation">;</span>
+    <span class="token comment">// 权值</span>
+    <span class="token keyword">int</span> weight<span class="token punctuation">;</span>
+    <span class="token comment">// 链域，指向下一个邻接点</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>EdgeNode<span class="token punctuation">;</span>
+
+<span class="token comment">// 顶点表结点</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">VertexNode</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// 入度</span>
+    <span class="token keyword">int</span> in<span class="token punctuation">;</span>
+    <span class="token comment">// 顶点信息</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">;</span>
+    <span class="token comment">// 边表头指针</span>
+    <span class="token keyword">struct</span> <span class="token class-name">EdgeNode</span> <span class="token operator">*</span>firstEdge<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>VertexNode<span class="token punctuation">,</span> AdjList<span class="token punctuation">[</span>MAXVEX<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    AdjList adjList<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numNodes<span class="token punctuation">,</span> numEdges<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>graphAdjList<span class="token punctuation">,</span> <span class="token operator">*</span>GraphAdjList<span class="token punctuation">;</span>
+
+<span class="token comment">// 顶点事件最早和最晚发生时间数组</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>etv<span class="token punctuation">,</span> <span class="token operator">*</span>ltv<span class="token punctuation">;</span>
+<span class="token comment">// 拓扑序列栈</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>stack2<span class="token punctuation">;</span>
+<span class="token comment">// 遍历拓扑序列栈指针</span>
+<span class="token keyword">int</span> top2<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">TopologicalSort</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 用于遍历邻接表的指针</span>
+    EdgeNode <span class="token operator">*</span>e<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>k<span class="token punctuation">,</span>gettop<span class="token punctuation">;</span>
+    <span class="token comment">// 栈指针域下标</span>
+    <span class="token keyword">int</span> top <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 统计输出的顶点个数</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 建栈用于将入度为0的顶点入栈</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>stack<span class="token punctuation">;</span>
+    <span class="token comment">// 分配栈空间</span>
+    stack <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>GL<span class="token operator">-></span>numNodes <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 遍历所有顶点，将顶点入度为0的入栈</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            stack<span class="token punctuation">[</span><span class="token operator">++</span>top<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 初始化</span>
+    top2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    etv <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>GL<span class="token operator">-></span>numNodes <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        etv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    stack2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>GL<span class="token operator">-></span>numNodes <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 出栈</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>top <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        gettop <span class="token operator">=</span> stack<span class="token punctuation">[</span>top<span class="token operator">--</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token comment">// 拓扑序列入栈</span>
+        stack2<span class="token punctuation">[</span>top2<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> gettop<span class="token punctuation">;</span>
+        <span class="token comment">// 遍历此顶点的所有邻接点</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>e <span class="token operator">=</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span> e<span class="token punctuation">;</span> e <span class="token operator">=</span> e<span class="token operator">-></span>next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 将这些邻接点的入度减1（实际上就是断掉边）</span>
+            k <span class="token operator">=</span> e<span class="token operator">-></span>adjvex<span class="token punctuation">;</span>
+            <span class="token comment">// 若入度减少后刚好为0，则再将该顶点入栈</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">--</span>GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                stack<span class="token punctuation">[</span><span class="token operator">++</span>top<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// 从前往后找较大值</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>etv<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span> <span class="token operator">+</span> e<span class="token operator">-></span>weight<span class="token punctuation">)</span> <span class="token operator">></span> etv<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                etv<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> etv<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span> <span class="token operator">+</span> e<span class="token operator">-></span>weight<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 输出顶点数与总顶点数不一致，说明有环</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">)</span> <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * 求关键路径
+ * @param GL
+ */</span>
+<span class="token keyword">void</span> <span class="token function">CriticalPath</span><span class="token punctuation">(</span>GraphAdjList GL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    EdgeNode <span class="token operator">*</span>e<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span> gettop<span class="token punctuation">,</span> k<span class="token punctuation">,</span> j<span class="token punctuation">;</span>
+    <span class="token comment">// 边活动的最早和最迟发生时间</span>
+    <span class="token keyword">int</span> ete<span class="token punctuation">,</span> lte<span class="token punctuation">;</span>
+    <span class="token comment">// 利用拓扑序列求出数组etv和拓扑排序后的栈</span>
+    <span class="token function">TopologicalSort</span><span class="token punctuation">(</span>GL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 初始化，分配内存给顶点事件最迟发生时间数组</span>
+    ltv <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>GL<span class="token operator">-></span>numNodes <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        ltv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> etv<span class="token punctuation">[</span>GL<span class="token operator">-></span>numNodes <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>top2 <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        gettop <span class="token operator">=</span> stack2<span class="token punctuation">[</span>top2<span class="token operator">--</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>e <span class="token operator">=</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span><span class="token punctuation">.</span>firstEdge<span class="token punctuation">;</span> e<span class="token punctuation">;</span> e <span class="token operator">=</span> e<span class="token operator">-></span>next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            k <span class="token operator">=</span> e<span class="token operator">-></span>adjvex<span class="token punctuation">;</span>
+            <span class="token comment">// 求各顶点事件最晚发生时间ltv（从后往前找较小值）</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>ltv<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">-</span> e<span class="token operator">-></span>weight <span class="token operator">&lt;</span> ltv<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                ltv<span class="token punctuation">[</span>gettop<span class="token punctuation">]</span> <span class="token operator">=</span> ltv<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">-</span> e<span class="token operator">-></span>weight<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 求 ete,lte,和关键路径</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        k <span class="token operator">=</span> e<span class="token operator">-></span>adjvex<span class="token punctuation">;</span>
+        ete <span class="token operator">=</span> etv<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        lte <span class="token operator">=</span> ltv<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">-</span> e<span class="token operator">-></span>weight<span class="token punctuation">;</span>
+        <span class="token comment">// 若两者相等则在关键路径上</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>ete <span class="token operator">==</span> lte<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"&lt;v%d - v%d> length: %d\n"</span><span class="token punctuation">,</span>
+                   GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">,</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">,</span> e<span class="token operator">-></span>weight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1631,7 +1858,7 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">117k</span>
+                        class="white-color">118.3k</span>
             
             
             
