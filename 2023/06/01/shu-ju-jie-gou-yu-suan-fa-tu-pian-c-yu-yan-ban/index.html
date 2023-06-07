@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    23 分
                 </div>
                 
 
@@ -1084,7 +1084,7 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
 <p>技巧：</p>
 <ul>
 <li>对顶点事件：从前往后取较大，从后往前取较小</li>
-<li>对弧活动：早头晚尾(晚尾减权值)</li>
+<li>对弧活动：早头(头顶点的最早发生时间)晚尾(晚尾减权值)</li>
 </ul>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//</span>
 <span class="token comment">// Created by zhou on 2023/6/6.</span>
@@ -1193,6 +1193,7 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
     <span class="token comment">// 初始化，分配内存给顶点事件最迟发生时间数组</span>
     ltv <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>GL<span class="token operator">-></span>numNodes <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 初始化，最迟事件发生时间数组初始默认值均为最早事件发生时间数组中的最后一个值</span>
         ltv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> etv<span class="token punctuation">[</span>GL<span class="token operator">-></span>numNodes <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">while</span> <span class="token punctuation">(</span>top2 <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1208,7 +1209,9 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
     <span class="token comment">// 求 ete,lte,和关键路径</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> GL<span class="token operator">-></span>numNodes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         k <span class="token operator">=</span> e<span class="token operator">-></span>adjvex<span class="token punctuation">;</span>
+        <span class="token comment">// 活动最早发生时间 = 弧头顶点的最早事件发生时间</span>
         ete <span class="token operator">=</span> etv<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 活动最迟发生时间 = 弧尾顶点的最迟事件发生时间 - 边上的权值</span>
         lte <span class="token operator">=</span> ltv<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">-</span> e<span class="token operator">-></span>weight<span class="token punctuation">;</span>
         <span class="token comment">// 若两者相等则在关键路径上</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>ete <span class="token operator">==</span> lte<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1216,7 +1219,7 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
                    GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">,</span> GL<span class="token operator">-></span>adjList<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">,</span> e<span class="token operator">-></span>weight<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1858,7 +1861,7 @@ Boolean <span class="token function">QueueEmpty</span><span class="token punctua
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.3k</span>
+                        class="white-color">118.6k</span>
             
             
             
