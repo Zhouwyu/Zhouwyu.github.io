@@ -391,7 +391,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -625,7 +625,17 @@
 
 
 <h2 id="找出字符串中第一个匹配项的下标"><a href="#找出字符串中第一个匹配项的下标" class="headerlink" title="找出字符串中第一个匹配项的下标"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/">找出字符串中第一个匹配项的下标</a></h2><p>典型的KMP算法</p>
-<p>KMP算法回顾</p>
+<p>KMP算法回顾：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PD4y1o7nd/?spm_id_from=333.788&vd_source=92086abe75e9a70dc6ca3658fcbb9b14">https://www.bilibili.com/video/BV1PD4y1o7nd/?spm_id_from=333.788&amp;vd_source=92086abe75e9a70dc6ca3658fcbb9b14</a></p>
+</blockquote>
+<p>几个概念：</p>
+<ul>
+<li>前缀：包含首位字符但不包含末位字符的子串</li>
+<li>后缀：包含末位字符但不包含首位字符的子串</li>
+<li>next数组定义：当主串与模式串的某一位字符不匹配时，模式串要回退的位置</li>
+<li><strong>next[j]：其值 &#x3D; 第j位字符前面j-1位字符组成的子串的前后缀重合字符数+1</strong></li>
+</ul>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -1268,7 +1278,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">121.9k</span>
+                        class="white-color">123k</span>
             
             
             
