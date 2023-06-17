@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="操作系统基础, ZHOU">
+    <meta name="keywords" content="操作系统基础（一）, ZHOU">
     <meta name="description" content="操作系统基础知识汇总">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>操作系统基础 | ZHOU</title>
+    <title>操作系统基础（一） | ZHOU</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/favicon.png">
     
 
@@ -333,7 +333,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">操作系统基础</h1>
+                    <h1 class="description center-align post-title">操作系统基础（一）</h1>
                 </div>
             </div>
         </div>
@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    238
+                    955
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -421,7 +421,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>操作系统相关内容学习记录</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>操作系统相关内容学习记录</p>
 <p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH/?p=2&spm_id_from=..top_right_bar_window_history.content.click&vd_source=92086abe75e9a70dc6ca3658fcbb9b14">王道计算机考研 操作系统</a></p>
 <h2 id="操作系统的概念"><a href="#操作系统的概念" class="headerlink" title="操作系统的概念"></a>操作系统的概念</h2><ul>
 <li><p>系统资源（包括软硬件）的管理者</p>
@@ -441,13 +441,70 @@
 </li>
 <li><p>共享</p>
 <p>资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用</p>
+<ul>
+<li>互斥共享：一个时间段内只允许一个进程访问该资源</li>
+<li>同时共享：允许一个时间段内由多个进程“同时”对它们进行访问（同时多是指宏观上的，即交替进行）</li>
+</ul>
 </li>
 <li><p>虚拟</p>
+<ul>
+<li>空分复用技术</li>
+<li>时分复用技术</li>
+</ul>
 </li>
 <li><p>异步</p>
+<p>由于资源有限，进程的执行过程中走走停停，以不可预知的速度向前推进，这就是异步性</p>
 </li>
 </ol>
-
+<h2 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h2><ol>
+<li>手工操作阶段</li>
+<li>批处理阶段<ul>
+<li>单道批处理系统</li>
+<li>多道批处理系统</li>
+</ul>
+</li>
+<li>分时操作系统：公平分配时间片，缺点不能优先处理紧急任务</li>
+<li>实时操作系统<ul>
+<li>硬实时：必须在绝对严格的规定时间内完成处理</li>
+<li>软实时：能接受偶尔违反时间规定</li>
+</ul>
+</li>
+<li>网络操作系统</li>
+<li>分布式操作系统</li>
+<li>个人计算机操作系统</li>
+</ol>
+<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>两类程序：内核程序和应用程序</p>
+<p>两类指令：特权指令和非特权指令</p>
+<p>两种处理器状态：内核态（核心态&#x2F;管态）和用户态（目态）</p>
+<p>内核：操作系统最重要最核心的部分，很多内核程序组成操作系统内核</p>
+<p>如何判别是何种状态？CPU中有一个<strong>程序状态字寄存器（PSW）</strong>，其中有一个二进制位，1表示内核态，0表示用户态</p>
+<p>如何变态？</p>
+<ul>
+<li>内核态 -&gt; 用户态：一条修改PSW的特权指令</li>
+<li>用户态 -&gt; 内核态：中断引起，硬件自动完成</li>
+</ul>
+<h2 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h2><p><strong>中断是让操作系统内核夺回CPU使用权的唯一途径</strong></p>
+<ol>
+<li>内中断（也叫异常）：与当前执行的指令有关，中断信号来自CPU内部<ul>
+<li>陷阱、陷入（应用程序故意引发的，原因是应用程序想访问内核）</li>
+<li>故障（错误条件引起，可能会被内核修复，修复成功后会把CPU使用权归还给应用程序）</li>
+<li>终止（致命错误引起，内核无法修复，直接终止应用程序）</li>
+</ul>
+</li>
+<li>外中断：与当前执行的指令无关，中断信号来自CPU外部<ul>
+<li>时钟中断</li>
+<li>IO中断请求</li>
+</ul>
+</li>
+</ol>
+<p>中断机制基本原理：检查中断信号类型，通过中断向量表查询找出相应的中断处理程序</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/06/17/c9a1d0c44000537c.png" alt="示意图"></p>
+<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p><img src="https://s3.bmp.ovh/imgs/2023/06/17/db8cdeb0cdb8dec2.png" alt="示意图"></p>
+<p>什么功能用到系统调用？凡是与共享资源有关的操作，都必须通过系统调用的方式向操作系统内核提出服务请求，由内核代为完成，确保系统的稳定性和安全性</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/06/17/7fe0e52eefd4fc5b.png" alt="与共享资源相关操作"></p>
+<p>系统调用的过程：</p>
+<p>传参-&gt;执行陷入指令（用户态）-&gt; 由操作系统内核程序处理系统调用请求（内核态）-&gt; 返回应用程序</p>
+<h2 id="操作系统体系结构"><a href="#操作系统体系结构" class="headerlink" title="操作系统体系结构"></a>操作系统体系结构</h2>
                 
             </div>
             <hr/>
@@ -1087,7 +1144,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">128.3k</span>
+                        class="white-color">129k</span>
             
             
             
