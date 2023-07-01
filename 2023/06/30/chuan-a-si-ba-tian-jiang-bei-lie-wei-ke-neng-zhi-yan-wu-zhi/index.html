@@ -4,12 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深入理解Java虚拟机之字节码执行引擎, ZHOU">
-    <meta name="description" content="字节码执行引擎
-所有的Java虚拟机的执行引擎输入、输出都是一致的：输入的是字节码二进制流，处理过程是字节码解析执行的等效过程，输出的是执行结果
-
-运行时栈帧结构局部变量表
-局部变量表（Local Variables Table）是一组变量">
+    <meta name="keywords" content="传阿斯巴甜将被列为可能致癌物质, ZHOU">
+    <meta name="description" content="分享并记录一下看过的一些文章，旨在提升个人英文阅读水平">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深入理解Java虚拟机之字节码执行引擎 | ZHOU</title>
+    <title>传阿斯巴甜将被列为可能致癌物质 | ZHOU</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/favicon.png">
     
 
@@ -332,12 +328,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1613510214658-f1e56b099811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwxMHx8Y29sYXxlbnwwfHx8fDE2ODgwOTM0Nzl8MA&ixlib=rb-4.0.3&q=80&w=1080')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深入理解Java虚拟机之字节码执行引擎</h1>
+                    <h1 class="description center-align post-title">传阿斯巴甜将被列为可能致癌物质</h1>
                 </div>
             </div>
         </div>
@@ -361,12 +357,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                                <span class="chip bg-color">深入理解Java虚拟机</span>
+                            <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                                <span class="chip bg-color">英语提升</span>
                             </a>
                         
                     </div>
@@ -377,8 +369,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E5%88%97/" class="post-category">
-                                深入理解Java虚拟机系列
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB%E5%88%86%E4%BA%AB/" class="post-category">
+                                每日阅读分享
                             </a>
                         
                     </div>
@@ -390,7 +382,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-01
+                    2023-06-30
                 </div>
                 
 
@@ -399,7 +391,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    978
+                    643
                 </div>
                 
 
@@ -429,80 +421,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="字节码执行引擎"><a href="#字节码执行引擎" class="headerlink" title="字节码执行引擎"></a>字节码执行引擎</h2><blockquote>
-<p>所有的Java虚拟机的执行引擎输入、输出都是一致的：输入的是字节码二进制流，处理过程是字节码解析执行的等效过程，输出的是执行结果</p>
-</blockquote>
-<h3 id="运行时栈帧结构"><a href="#运行时栈帧结构" class="headerlink" title="运行时栈帧结构"></a>运行时栈帧结构</h3><h4 id="局部变量表"><a href="#局部变量表" class="headerlink" title="局部变量表"></a>局部变量表</h4><blockquote>
-<p>局部变量表（Local Variables Table）是一组变量值的存储空间，用于存放方法参数和方法内部定义的局部变量，其容量最小单位是变量槽（Slot）。</p>
-<p>一个Slot中可以存放：boolean，byte，char，short，int，float，reference，returnAddress (少见)，虚拟机可通过局部变量表中的reference查找Java堆中的实例对象的起始地址&#x2F;查找方法区中的Class对象。</p>
-<p>若当前字节码PC计数器的值已经超出了某个变量的作用域，那这个变量对应的变量槽就可以交给其他变量来重用</p>
-</blockquote>
-<p>非static方法局部变量表的分配图解：</p>
-<p><img src="https://s3.bmp.ovh/imgs/2022/04/29/6bd14469cca0d219.png" alt="image-20220127150800292"></p>
-<p>关于局部变量表中变量槽复用对垃圾收集的影响：</p>
-<ol>
-<li>可以看到并无进行垃圾回收，因为System.gc执行时，bytes还处于作用域内</li>
-</ol>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// VM参数：-verbose:gc</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 64M内存填充</span>
-    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">64</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token comment">// 垃圾收集</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-输出结果：
-  <span class="token punctuation">[</span><span class="token constant">GC</span> <span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token number">70739</span>K<span class="token operator">-></span><span class="token function">66368K</span><span class="token punctuation">(</span><span class="token number">249344</span>K<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0020881</span> secs<span class="token punctuation">]</span>
-	<span class="token punctuation">[</span><span class="token class-name">Full</span> <span class="token constant">GC</span> <span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token number">66368</span>K<span class="token operator">-></span><span class="token function">66168K</span><span class="token punctuation">(</span><span class="token number">249344</span>K<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0052478</span> secs<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li>给bytes加上括号{}后，作用域应该发生了变化，但可以看到垃圾依旧没有进行回。这是因为作用域虽然发生了变化，但局部变量表之后并没有再发生过任何的读写行为，那bytes原来占用着的变量槽也就还未被复用，GCRoots的部分局部变量表还存在关联，因此无法回收</li>
-</ol>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token comment">// VM参数：-verbose:gc</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">64</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-输出结果：
-  <span class="token punctuation">[</span><span class="token constant">GC</span> <span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token number">70739</span>K<span class="token operator">-></span><span class="token function">66384K</span><span class="token punctuation">(</span><span class="token number">249344</span>K<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0009639</span> secs<span class="token punctuation">]</span>
-	<span class="token punctuation">[</span><span class="token class-name">Full</span> <span class="token constant">GC</span> <span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token number">66384</span>K<span class="token operator">-></span><span class="token function">66168K</span><span class="token punctuation">(</span><span class="token number">249344</span>K<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0059830</span> secs<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li>成功回收。因为变量a成功复用了bytes的变量槽</li>
-</ol>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// VM参数：-verbose:gc</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">64</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-输出结果：
-    <span class="token punctuation">[</span><span class="token constant">GC</span> <span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token number">70739</span>K<span class="token operator">-></span><span class="token function">66384K</span><span class="token punctuation">(</span><span class="token number">249344</span>K<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0011159</span> secs<span class="token punctuation">]</span>
-	<span class="token punctuation">[</span><span class="token class-name">Full</span> <span class="token constant">GC</span> <span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token number">66384</span>K<span class="token operator">-></span><span class="token function">632K</span><span class="token punctuation">(</span><span class="token number">249344</span>K<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0079671</span> secs<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>值得注意的一个问题：局部变量不像类变量存在准备阶段（即有默认值），局部变量必须赋予初始化值才能使用</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> a<span class="token punctuation">;</span>
-    <span class="token comment">// 未赋值，编译报错</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="操作数栈"><a href="#操作数栈" class="headerlink" title="操作数栈"></a>操作数栈</h4><blockquote>
-<p>操作数栈常叫操作栈，先入后出，32位数据类型所占的栈容量为1，64位数据类型所占的栈容量为2</p>
-</blockquote>
-<p>在方法的执行过程中，会有各种字节码指令往操作数栈中写入和提取内容，也就是出栈和入栈操作</p>
-<p><img src="https://s3.bmp.ovh/imgs/2022/04/29/bdfc559fbe6e067f.png" alt="image-20220208153702132"></p>
-<h4 id="动态连接"><a href="#动态连接" class="headerlink" title="动态连接"></a>动态连接</h4><blockquote>
-<p>Class文件的常量池中存有大量的符号引用，字节码中的方法调用指令就以常量池里指向方法的符号引用作为参数。这些符号引用一部分会在类加载阶段或者第一次使用的时候就被转化为直接引用，这种转化被称为<code>静态解析</code>。另外一部分将在每一次运行期间都转化为直接引用，这部分就称为<code>动态连接</code></p>
-</blockquote>
-<h4 id="方法返回地址"><a href="#方法返回地址" class="headerlink" title="方法返回地址"></a>方法返回地址</h4><blockquote>
-<p>方法返回时可能需要在栈帧中保存一些信息，用来帮助恢复它的上层主调方法的执行状态。一般来说，方法正常退出时，主调方法的PC计数器的值就可以作为返回地址，栈帧中很可能会保存这个计数器值。而方法异常退出时，返回地址是要通过异常处理器表来确定的，栈帧中就一般不会保存这部分信息</p>
+                <h1 id="Exclusive-WHO’s-cancer-research-agency-to-say-aspartame-sweetener-a-possible-carcinogen-sources"><a href="#Exclusive-WHO’s-cancer-research-agency-to-say-aspartame-sweetener-a-possible-carcinogen-sources" class="headerlink" title="Exclusive: WHO’s cancer research agency to say aspartame sweetener a possible carcinogen - sources"></a><strong>Exclusive: WHO’s cancer research agency to say aspartame sweetener a possible carcinogen - sources</strong></h1><hr>
+<p>One of the world’s most common artificial sweeteners is set to be declared a possible carcinogen next month by a leading global health body, according to two sources with knowledge of the process, pitting it against the food industry and regulators.</p>
+<p>Aspartame, used in products from Coca-Cola diet sodas to Mars’ Extra chewing gum and some Snapple drinks, will be listed in July as “possibly carcinogenic to humans” for the first time by the International Agency for Research on Cancer (IARC), the World Health Organization’s (WHO) cancer research arm, the sources said.</p>
+<p>The IARC ruling, finalised earlier this month after a meeting of the group’s external experts, is intended to assess whether something is a potential hazard or not, based on all the published evidence.</p>
+<p>It does not take into account how much of a product a person can safely consume. This advice for individuals comes from a separate WHO expert committee on food additives, known as JECFA (the Joint WHO and Food and Agriculture Organization’s Expert Committee on Food Additives), alongside determinations from national regulators.</p>
+<p>However, similar IARC rulings in the past for different substances have raised concerns among consumers about their use, led to lawsuits, and pressured manufacturers to recreate recipes and swap to alternatives. That has led to criticism that the IARC’s assessments can be confusing to the public.</p>
+<p>JECFA, the WHO committee on additives, is also reviewing aspartame use this year. Its meeting began at the end of June and it is due to announce its findings on the same day that the IARC makes public its decision – on July 14.</p>
+<p>Since 1981, JECFA has said aspartame is safe to consume within accepted daily limits. For example, an adult weighing 60 kg (132 pounds) would have to drink between 12 and 36 cans of diet soda – depending on the amount of aspartame in the beverage – every day to be at risk. Its view has been widely shared by national regulators, including in the United States and Europe.</p>
+<p>An IARC spokesperson said both the IARC and JECFA committees’ findings were confidential until July, but added they were “complementary”, with IARC’s conclusion representing “the first fundamental step to understand carcinogenicity”. The additives committee “conducts risk assessment, which determines the probability of a specific type of harm (e.g., cancer) to occur under certain conditions and levels of exposure.”</p>
+<p>However, industry and regulators fear that holding both processes at around the same time could be confusing, according to letters from U.S. and Japanese regulators seen by Reuters.</p>
+<p>“We kindly ask both bodies to coordinate their efforts in reviewing aspartame to avoid any confusion or concerns among the public,” Nozomi Tomita, an official from Japan’s Ministry of Health, Labour and Welfare, wrote in a letter dated March 27 to WHO’s deputy director general, Zsuzsanna Jakab.</p>
+<p>The letter, reviewed by Reuters, also called for the conclusions of both bodies to be released on the same day, as is now happening. The Japanese mission in Geneva, where the WHO is based, did not respond to a request for comment.</p>
+<hr>
+<h2 id="生词记录"><a href="#生词记录" class="headerlink" title="生词记录"></a>生词记录</h2><blockquote>
+<p>artificial 人工的，人造的</p>
+<p>sweetener 甜味剂</p>
+<p>carcinogen 致癌物质</p>
+<p>pit sb&#x2F;sth against sb&#x2F;sth 使相斗，使竞争，使较量</p>
+<p>arm 职能部门，分支机构，分部</p>
+<p>ruling 裁决，裁定，判定，决定</p>
+<p>finalise 最后定下</p>
+<p>hazard 危险物</p>
+<p>additive 添加剂</p>
+<p>substance 物质，材料；重要性，要旨，实质，根据</p>
+<p>recipe 食谱；方法，秘诀</p>
+<p>beverage 饮料</p>
+<p>confidential 保密的</p>
+<p>complementary 补充的，互补的</p>
+<p>coordinate 协调，相互配合</p>
 </blockquote>
 
                 
@@ -518,12 +465,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                                    <span class="chip bg-color">深入理解Java虚拟机</span>
+                                <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                                    <span class="chip bg-color">英语提升</span>
                                 </a>
                             
                         </div>
@@ -866,50 +809,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/01/xu-ni-ji-xing-neng-jian-kong-gu-zhang-chu-li-gong-ju/">
+                <a href="/2023/06/30/chuan-a-si-ba-tian-jiang-bei-lie-wei-ke-neng-zhi-yan-wu-zhi/">
                     <div class="card-image">
                         
+                        <img src="https://images.unsplash.com/photo-1613510214658-f1e56b099811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwxMHx8Y29sYXxlbnwwfHx8fDE2ODgwOTM0Nzl8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="传阿斯巴甜将被列为可能致癌物质">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="深入理解Java虚拟机之工具篇">
-                        
-                        <span class="card-title">深入理解Java虚拟机之工具篇</span>
+                        <span class="card-title">传阿斯巴甜将被列为可能致癌物质</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            分享并记录一下看过的一些文章，旨在提升个人英文阅读水平
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E5%88%97/" class="post-category">
-                                    深入理解Java虚拟机系列
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB%E5%88%86%E4%BA%AB/" class="post-category">
+                                    每日阅读分享
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                        <span class="chip bg-color">深入理解Java虚拟机</span>
+                    <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                        <span class="chip bg-color">英语提升</span>
                     </a>
                     
                 </div>
@@ -923,12 +863,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/01/yan-jiu-biao-ming-han-fu-mian-ci-hui-de-biao-ti-neng-zeng-jia-dian-ji-lu/">
+                <a href="/2023/06/29/2024qs-shi-jie-da-xue-pai-ming-gong-bu/">
                     <div class="card-image">
                         
-                        <img src="https://images.unsplash.com/photo-1567578923208-5cc60003892d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHw2OXx8b3B0aW1pc3RpY3xlbnwwfHx8fDE2Nzk1MzczODQ&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="研究表明含负面词汇的标题能增加点击率">
+                        <img src="https://images.unsplash.com/20/cambridge.JPG?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwyfHx1bml2ZXJzaXR5fGVufDB8fHx8MTY4ODAwNzg2Nnww&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="2024QS世界大学排名公布">
                         
-                        <span class="card-title">研究表明含负面词汇的标题能增加点击率</span>
+                        <span class="card-title">2024QS世界大学排名公布</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -939,7 +879,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-29
                             </span>
                         <span class="publish-author">
                             
