@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Redis速成, ZHOU">
-    <meta name="description" content="Redis相关知识点">
+    <meta name="keywords" content="调查发现87%经典游戏已无法访问, ZHOU">
+    <meta name="description" content="分享并记录一下看过的一些文章，旨在提升个人英文阅读水平">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Redis速成 | ZHOU</title>
+    <title>调查发现87%经典游戏已无法访问 | ZHOU</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/favicon.png">
     
 
@@ -328,12 +328,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1568797157853-d43d5ef67c6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwzfHxyZWRpc3xlbnwwfHx8fDE2NzkzNjUzNzQ&ixlib=rb-4.0.3&q=80&w=1080')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwyfHxnYW1lfGVufDB8fHx8MTY4OTEyODE2MHww&ixlib=rb-4.0.3&q=80&w=1080')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Redis速成</h1>
+                    <h1 class="description center-align post-title">调查发现87%经典游戏已无法访问</h1>
                 </div>
             </div>
         </div>
@@ -357,8 +357,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Redis/">
-                                <span class="chip bg-color">Redis</span>
+                            <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                                <span class="chip bg-color">英语提升</span>
                             </a>
                         
                     </div>
@@ -369,8 +369,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                关于学习
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB%E5%88%86%E4%BA%AB/" class="post-category">
+                                每日阅读分享
                             </a>
                         
                     </div>
@@ -382,7 +382,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-01
+                    2023-07-12
                 </div>
                 
 
@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    603
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -421,195 +421,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Redis速成"><a href="#Redis速成" class="headerlink" title="Redis速成"></a>Redis速成</h1><p>MySQL是关系型数据库，其涉及硬盘读写操作，当并发量大且读写频繁时，速度会变慢；</p>
-<p>Redis是内存数据库，内存的读写速度远快于硬盘，由此学习了解一下Redis</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>Redis中的数据以键值形式存储，默认情况下，连接的是0号数据库，默认总共有16个，我们可以通过对应的配置文件进行修改。</p>
-<ol>
-<li><p>切换数据库</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> 序号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>添加数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> <span class="token keyword">key</span> <span class="token keyword">value</span>
-
-<span class="token comment">-- 一次性设置多个</span>
-mset key1 value1 key2 value2 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>获取数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">get <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>设置过期时间</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> <span class="token keyword">key</span> <span class="token keyword">value</span> ex 秒数
-
-<span class="token keyword">set</span> <span class="token keyword">key</span> <span class="token keyword">value</span> px 毫秒数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>单独设置过期时间</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">expire <span class="token keyword">key</span> 秒数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>查看剩余的过期时间</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">ttl <span class="token keyword">key</span> <span class="token comment">-- 查看秒</span>
-
-pttl <span class="token keyword">key</span> <span class="token comment">-- 查看毫秒</span>
-
-persist <span class="token keyword">key</span> <span class="token comment">-- 转换为永久 （显示 -1 即为永久）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>删除数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">del <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>查看所有的键</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">keys</span> <span class="token operator">*</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>查询是否存在对应的键</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">exists</span> <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>随机取出某一个键</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">randomkey<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>将一数据库数据移到另一数据库中</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">move <span class="token keyword">key</span> 数据库序号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>修改键</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">rename</span> <span class="token keyword">key</span> newkey
-
-renamex <span class="token keyword">key</span> newkey <span class="token comment">-- 会判断新键是否存在，不存在再更名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>运算</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">incr <span class="token keyword">key</span>  <span class="token comment">-- 对应的value若为数字会自增1</span>
-
-incrby <span class="token keyword">key</span> x <span class="token comment">-- 对应的value若为数字会加 x</span>
-
-decr <span class="token keyword">key</span> <span class="token comment">-- 自减</span>
-
-decrby <span class="token keyword">key</span> x <span class="token comment">-- 减去 x</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>查看键的类型</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">type</span> <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>参考基本操作</p>
-<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>类似Java中<code>Map&lt;String, Map&lt;String, String&gt;&gt;</code></p>
-<p>即Redis中对应的value是个<code>Map&lt;String, String&gt;</code></p>
-<ol>
-<li><p>设置数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hset <span class="token keyword">key</span> 字段 值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>获取数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 获取相应字段对应的值</span>
-hget <span class="token keyword">key</span> 字段
-
-<span class="token comment">-- 获取所有字段和值</span>
-hgetall <span class="token keyword">key</span>
-
-<span class="token comment">-- 获取所有字段</span>
-hkeys <span class="token keyword">key</span>
-
-<span class="token comment">-- 获取所有字段对应的值</span>
-hvals <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>是否存在相应的字段</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hexists <span class="token keyword">key</span> 字段<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>删除相应的字段</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hdel <span class="token keyword">key</span> 字段<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>查看一共多少键值对</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hlen <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><ol>
-<li><p>添加数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 从头部添加</span>
-lpush <span class="token keyword">key</span> element
-
-<span class="token comment">-- 从尾部添加</span>
-rpush <span class="token keyword">key</span> element
-
-<span class="token comment">-- 在指定元素前/后插入元素</span>
-linsert <span class="token keyword">key</span> before<span class="token operator">/</span><span class="token keyword">after</span> 指定元素 element<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>获取数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 根据下标获取元素</span>
-lindex <span class="token keyword">key</span> 下标
-
-<span class="token comment">-- 获取并移除头部元素</span>
-lpop <span class="token keyword">key</span>
-
-<span class="token comment">-- 获取并移除尾部元素</span>
-rpop <span class="token keyword">key</span>
-
-<span class="token comment">-- 获取指定范围内的</span>
-lrange <span class="token keyword">key</span> <span class="token keyword">start</span> <span class="token keyword">end</span>
-
-lrange <span class="token keyword">key</span> <span class="token number">0</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token comment">-- 获取全部元素（-1表示倒数第一个元素）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>移动并获取</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 从当前数组尾部取出放到目标数组的头部中，并返回元素</span>
-   rpoplpush 当前数组 目标数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>支持阻塞操作，类似生产者、消费者</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">blpop <span class="token keyword">key</span> timeout <span class="token comment">-- 若列表中无元素则等待，timeout为超时时间限制，若等待期间有元素则会马上获取</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><ol>
-<li><p>添加元素</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sadd <span class="token keyword">key</span> value1，value2<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>查看set中有多少个值</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">scard <span class="token keyword">key</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>判断集合中是否包含指定值</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sismember <span class="token keyword">key</span> <span class="token keyword">value</span> <span class="token comment">-- 是否包含指定值</span>
-
-smembers <span class="token keyword">key</span> <span class="token comment">-- 列出所有值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>相关运算</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sdiff key1 key2 <span class="token comment">-- 集合之间的差集</span>
-sdiffstore 目标 key1 key2 <span class="token comment">-- 差集存到目标集合中</span>
-
-sinter key1 key2 <span class="token comment">-- 交集</span>
-sintersotre 目标 key1 key2 <span class="token comment">-- 交集存到目标集合中</span>
-
-sunion key1 key2 <span class="token comment">-- 并集</span>
-sunionsotre 目标 key1 key2 <span class="token comment">-- 并集存到目标集合中</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>移动指定值</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">smove 原<span class="token keyword">key</span> 目标<span class="token keyword">key</span> <span class="token keyword">value</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>移除操作</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 随机移除</span>
-spop <span class="token keyword">key</span>
-
-<span class="token comment">-- 移除制定</span>
-srem <span class="token keyword">key</span> <span class="token keyword">value</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-<h3 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h3><p>为每个值设定一个分数，分数大小决定值的位置，从而使其有序</p>
-<ol>
-<li><p>添加数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">zadd <span class="token keyword">key</span> <span class="token keyword">value</span> score <span class="token comment">-- score分数决定值的位置</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>查询</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">zcard <span class="token keyword">key</span> <span class="token comment">-- 查看有多少个值</span>
-
-<span class="token comment">-- 通过分数段查看</span>
-zrangebyscore <span class="token keyword">key</span> <span class="token keyword">start</span> <span class="token keyword">end</span> <span class="token punctuation">[</span>withscores<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token keyword">limit</span><span class="token punctuation">]</span>
-
-<span class="token comment">-- 统计分数段内的数量</span>
-zcount <span class="token keyword">key</span> <span class="token keyword">start</span> <span class="token keyword">end</span>
-
-<span class="token comment">-- 根据分数获取指定值的排名</span>
-zrank <span class="token keyword">key</span> <span class="token keyword">value</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>移除</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">zrem <span class="token keyword">key</span> <span class="token keyword">value</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>获取区间内所有</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">zrange <span class="token keyword">key</span> <span class="token keyword">start</span> <span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
-<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="RDB（Redis-DataBase）"><a href="#RDB（Redis-DataBase）" class="headerlink" title="RDB（Redis DataBase）"></a>RDB（Redis DataBase）</h3><p>当开启了RDB持久化机制后，在一定的时间间隔内，Redis会将内存中的数据保存在一个文件中。这个文件可以看作是Redis的“快照”，其中包含了某个时间点上Redis的所有数据。RDB的优点在于它是一个非常紧凑的表示，同时因为在恢复期间需要加载并解析一个单独的文件，所以速度也很快。</p>
-<p>优点：加载速度快，数据体积小</p>
-<p>缺点：存储速度慢，消耗资源多，会发生数据丢失</p>
-<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append-Only File)"></a>AOF(Append-Only File)</h3><p>当开启了AOF持久化机制后，Redis会将每个写入的命令都追加到一个文件中。这意味着当Redis重新启动时，可以从上一次写入命令的位置开始重放命令确保数据的准确性。AOF的优点在于它可以提供粒度更细的持久化，因此可以避免在恢复时丢失太多数据。缺点在于它的文件通常比RDB生成的文件大，其速度会慢于RDB。</p>
-<p>优点：存储速度快，消耗资源少，支持实时存储</p>
-<p>缺点：加载速度慢，数据体积大</p>
-<h2 id="事务和锁"><a href="#事务和锁" class="headerlink" title="事务和锁"></a>事务和锁</h2><p>开启事务：<code>multi</code></p>
-<p>执行事务：<code>exec</code></p>
-<p>中途取消事务：<code>discard</code></p>
+                <h1 id="STUDY-REVEALS-87-OF-CLASSIC-GAMES-ARE-‘COMPLETELY-UNAVAILABLE’"><a href="#STUDY-REVEALS-87-OF-CLASSIC-GAMES-ARE-‘COMPLETELY-UNAVAILABLE’" class="headerlink" title="STUDY REVEALS 87% OF CLASSIC GAMES ARE ‘COMPLETELY UNAVAILABLE’"></a><strong>STUDY REVEALS 87% OF CLASSIC GAMES ARE ‘COMPLETELY UNAVAILABLE’</strong></h1><hr>
+<p>There’s something special about that burst of nostalgia that you get when you see snippets of a game that you used to play when you were young. It tends to hit even harder when you actually replay that game after ten, twenty, or even thirty years.</p>
+<p>Today, a study was published by the Video Game History Foundation, and it offers up a damning revelation for fans of the retro world of gaming. In this study, it’s stated that 87% of classic video games released in the United States are ‘critically endangered’. And it suggests that as time goes on, it’s only going to get worse.</p>
+<p>9 in 10 Games Are Gone</p>
+<p>In the in-depth study that was published in partnership with the Software Preservation Network, it was revealed that just 13% of all games released before 2010 are commercially or readily available today. This study was completed using a random list of 1,500 games from a ‘single source of truth’, and during the data collection phase, analysts looked across multiple ecosystems of gaming, which they categorised as ‘abandoned’, ‘neglected’, and ‘active’.</p>
+<p>However, that number quickly rose, and by the conclusion of the study, more than 4,000 games had been examined for signs of life and availability. It was a fairly complex undertaking – if you’re interested in the granular details of the study, I recommend checking out the formal breakdown of the process used during the research stage.</p>
+<p>It references quite specifically how remakes, remasters, and re-releases were counted, too.</p>
+<p>Here are some key notes to take away from the study, though:</p>
+<p>· The PlayStation 2, the best-selling console in history, has seen just 12% of its entire catalogue survive the test of time.</p>
+<p>· An estimated 1,000 unique games disappeared when the 3DS and Wii U digital storefronts closed earlier this year.</p>
+<p>· ‘Outdated’ US copyright laws are preventing libraries and organisations from easily preserving classic video games.</p>
+<p>· There’s an ongoing debate to rewrite these laws, with a review being scheduled for 2024.</p>
+<p>All-in-all, this study topped out at 51 pages of pure information on the state of the historical preservation of video games. It discusses the cultural importance of video games, the challenges presented by ‘re-issue’, and how the situation may worsen in the future with the demise of certain platforms or the shutdown of further digital storefronts.</p>
+<p>Are you a retro gaming fan? Are you shocked by these numbers, or were you already aware of how hard it is to obtain certain retro titles?</p>
+<hr>
+<h2 id="生词记录"><a href="#生词记录" class="headerlink" title="生词记录"></a>生词记录</h2><blockquote>
+<p>burst 爆裂，涨开；突然增加，迸发</p>
+<p>nostalgia 怀旧</p>
+<p>snippet 片段</p>
+<p>damning 谴责的，毫不留情的</p>
+<p>revelation 出乎意料的的事物，令人惊喜的发现，被透露的事实</p>
+<p>retro 怀旧的</p>
+<p>endangered 濒临灭绝的</p>
+<p>undertaking 工作，任务，事业</p>
+<p>granular 颗粒状的</p>
+<p>breakdown 故障，毛病；神经衰弱，精神崩溃；细分，分类</p>
+<p>reference 涉及，提及；引文出处，参考书目</p>
+<p>specifically 明确地，确切地，具体地</p>
+<p>remaster 重新录制</p>
+<p>take sth away 从所读所听中学会或获得</p>
+<p>catalogue 记录，将···编入目录</p>
+<p>storefront 临街店面</p>
+<p>top out at sth 达到最高水平</p>
+<p>demise 终止，结束，消亡；倒闭，垮台</p>
+</blockquote>
 
                 
             </div>
@@ -624,8 +470,8 @@ zrank <span class="token keyword">key</span> <span class="token keyword">value</
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Redis/">
-                                    <span class="chip bg-color">Redis</span>
+                                <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                                    <span class="chip bg-color">英语提升</span>
                                 </a>
                             
                         </div>
@@ -968,16 +814,17 @@ zrank <span class="token keyword">key</span> <span class="token keyword">value</
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/01/tiktok-wang-hong-qi-ju-hua-sheng-dun-fan-dui-mei-guo-feng-jin-ji-hua/">
+                <a href="/2023/07/12/diao-cha-fa-xian-87-jing-dian-you-xi-yi-wu-fa-fang-wen/">
                     <div class="card-image">
                         
-                        <img src="https://images.unsplash.com/photo-1594319622338-8ce30cd95146?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwyMHx8dGlrdG9rfGVufDB8fHx8MTY3OTc5MzAwMg&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="TikTok网红齐聚华盛顿，反对美国封禁计划">
+                        <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwyfHxnYW1lfGVufDB8fHx8MTY4OTEyODE2MHww&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="调查发现87%经典游戏已无法访问">
                         
-                        <span class="card-title">TikTok网红齐聚华盛顿，反对美国封禁计划</span>
+                        <span class="card-title">调查发现87%经典游戏已无法访问</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -987,9 +834,9 @@ zrank <span class="token keyword">key</span> <span class="token keyword">value</
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1002,6 +849,7 @@ zrank <span class="token keyword">key</span> <span class="token keyword">value</
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1020,30 +868,30 @@ zrank <span class="token keyword">key</span> <span class="token keyword">value</
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/01/python-su-cheng/">
+                <a href="/2023/07/11/prada-zhe-ci-zhao-dui-ren-liao/">
                     <div class="card-image">
                         
-                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHw1fHxQeXRob258ZW58MHx8fHwxNjgxMzUyMDI1&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="python基础学习">
+                        <img src="https://images.unsplash.com/photo-1607085941350-7d46c83aa9f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwzfHxwcmFkYXxlbnwwfHx8fDE2ODg5OTI1MzV8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="Prada这次找对人了">
                         
-                        <span class="card-title">python基础学习</span>
+                        <span class="card-title">Prada这次找对人了</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Python基础知识汇总
+                            分享并记录一下看过的一些文章，旨在提升个人英文阅读水平
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    关于学习
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB%E5%88%86%E4%BA%AB/" class="post-category">
+                                    每日阅读分享
                                 </a>
                             
                             
@@ -1053,8 +901,8 @@ zrank <span class="token keyword">key</span> <span class="token keyword">value</
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                        <span class="chip bg-color">英语提升</span>
                     </a>
                     
                 </div>
