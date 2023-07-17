@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="操作系统基础（一）, ZHOU">
-    <meta name="description" content="操作系统基础知识汇总">
+    <meta name="keywords" content="已读不回, ZHOU">
+    <meta name="description" content="分享并记录一下看过的一些文章，旨在提升个人英文阅读水平">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>操作系统基础（一） | ZHOU</title>
+    <title>已读不回 | ZHOU</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Zhouwyu/Zhouwyu.github.io/favicon.png">
     
 
@@ -328,12 +328,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1633119747461-79f45df1913c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwzMnx8U3lzdGVtfGVufDB8fHx8MTY4MzYzODMyOQ&ixlib=rb-4.0.3&q=80&w=1080')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.unsplash.com/photo-1610548822783-33fb5cb0e3a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwyfHxXaGF0c0FwcHxlbnwwfHx8fDE2ODk1NjM1MjN8MA&ixlib=rb-4.0.3&q=80&w=1080')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">操作系统基础（一）</h1>
+                    <h1 class="description center-align post-title">已读不回</h1>
                 </div>
             </div>
         </div>
@@ -357,8 +357,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
+                            <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                                <span class="chip bg-color">英语提升</span>
                             </a>
                         
                     </div>
@@ -369,8 +369,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                关于学习
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB%E5%88%86%E4%BA%AB/" class="post-category">
+                                每日阅读分享
                             </a>
                         
                     </div>
@@ -382,7 +382,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-01
+                    2023-07-17
                 </div>
                 
 
@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    955
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -421,90 +421,61 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>操作系统相关内容学习记录</p>
-<p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH/?p=2&spm_id_from=..top_right_bar_window_history.content.click&vd_source=92086abe75e9a70dc6ca3658fcbb9b14">王道计算机考研 操作系统</a></p>
-<h2 id="操作系统的概念"><a href="#操作系统的概念" class="headerlink" title="操作系统的概念"></a>操作系统的概念</h2><ul>
-<li><p>系统资源（包括软硬件）的管理者</p>
-</li>
-<li><p>向上层提供方便易用的服务</p>
-</li>
-<li><p>计算机系统中最基本的系统软件</p>
-</li>
-</ul>
-<h2 id="四个特征"><a href="#四个特征" class="headerlink" title="四个特征"></a>四个特征</h2><ol>
-<li><p><strong>并发</strong>（最基本的特性）</p>
-<p>两个或多个事件在同一时间间隔内发生，即事件在宏观上是同时发生的，微观上是交替发生的；而<code>并行</code>则是两个或多个事件同一时刻发生</p>
-<ul>
-<li>单核CPU同一时刻只能执行一个程序，各个程序只能并发地执行</li>
-<li>多核CPU同一时刻可以同时执行多个程序，多个程序可以并行地执行</li>
-</ul>
-</li>
-<li><p>共享</p>
-<p>资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用</p>
-<ul>
-<li>互斥共享：一个时间段内只允许一个进程访问该资源</li>
-<li>同时共享：允许一个时间段内由多个进程“同时”对它们进行访问（同时多是指宏观上的，即交替进行）</li>
-</ul>
-</li>
-<li><p>虚拟</p>
-<ul>
-<li>空分复用技术</li>
-<li>时分复用技术</li>
-</ul>
-</li>
-<li><p>异步</p>
-<p>由于资源有限，进程的执行过程中走走停停，以不可预知的速度向前推进，这就是异步性</p>
-</li>
-</ol>
-<h2 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h2><ol>
-<li>手工操作阶段</li>
-<li>批处理阶段<ul>
-<li>单道批处理系统</li>
-<li>多道批处理系统</li>
-</ul>
-</li>
-<li>分时操作系统：公平分配时间片，缺点不能优先处理紧急任务</li>
-<li>实时操作系统<ul>
-<li>硬实时：必须在绝对严格的规定时间内完成处理</li>
-<li>软实时：能接受偶尔违反时间规定</li>
-</ul>
-</li>
-<li>网络操作系统</li>
-<li>分布式操作系统</li>
-<li>个人计算机操作系统</li>
-</ol>
-<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>两类程序：内核程序和应用程序</p>
-<p>两类指令：特权指令和非特权指令</p>
-<p>两种处理器状态：内核态（核心态&#x2F;管态）和用户态（目态）</p>
-<p>内核：操作系统最重要最核心的部分，很多内核程序组成操作系统内核</p>
-<p>如何判别是何种状态？CPU中有一个<strong>程序状态字寄存器（PSW）</strong>，其中有一个二进制位，1表示内核态，0表示用户态</p>
-<p>如何变态？</p>
-<ul>
-<li>内核态 -&gt; 用户态：一条修改PSW的特权指令</li>
-<li>用户态 -&gt; 内核态：中断引起，硬件自动完成</li>
-</ul>
-<h2 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h2><p><strong>中断是让操作系统内核夺回CPU使用权的唯一途径</strong></p>
-<ol>
-<li>内中断（也叫异常）：与当前执行的指令有关，中断信号来自CPU内部<ul>
-<li>陷阱、陷入（应用程序故意引发的，原因是应用程序想访问内核）</li>
-<li>故障（错误条件引起，可能会被内核修复，修复成功后会把CPU使用权归还给应用程序）</li>
-<li>终止（致命错误引起，内核无法修复，直接终止应用程序）</li>
-</ul>
-</li>
-<li>外中断：与当前执行的指令无关，中断信号来自CPU外部<ul>
-<li>时钟中断</li>
-<li>IO中断请求</li>
-</ul>
-</li>
-</ol>
-<p>中断机制基本原理：检查中断信号类型，通过中断向量表查询找出相应的中断处理程序</p>
-<p><img src="https://s3.bmp.ovh/imgs/2023/06/17/c9a1d0c44000537c.png" alt="示意图"></p>
-<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p><img src="https://s3.bmp.ovh/imgs/2023/06/17/db8cdeb0cdb8dec2.png" alt="示意图"></p>
-<p>什么功能用到系统调用？凡是与共享资源有关的操作，都必须通过系统调用的方式向操作系统内核提出服务请求，由内核代为完成，确保系统的稳定性和安全性</p>
-<p><img src="https://s3.bmp.ovh/imgs/2023/06/17/7fe0e52eefd4fc5b.png" alt="与共享资源相关操作"></p>
-<p>系统调用的过程：</p>
-<p>传参-&gt;执行陷入指令（用户态）-&gt; 由操作系统内核程序处理系统调用请求（内核态）-&gt; 返回应用程序</p>
-<h2 id="操作系统体系结构"><a href="#操作系统体系结构" class="headerlink" title="操作系统体系结构"></a>操作系统体系结构</h2>
+                <h1 id="Message-sent-received-but-no-instant-reply-how-does-that-make-you-feel"><a href="#Message-sent-received-but-no-instant-reply-how-does-that-make-you-feel" class="headerlink" title="Message sent, received but no instant reply: how does that make you feel?"></a><strong>Message sent, received but no instant reply: how does that make you feel?</strong></h1><hr>
+<p>Your phone chimes, it’s a message from your partner. You reply instantly because that’s what you always do.</p>
+<p>Then you decide to add another message: “By the way, I love you ☺”</p>
+<p>You see the “read” status appear under the message, and you wait for his or her reply. An hour later you are still waiting, still checking.</p>
+<p>Has this ever happened to you?</p>
+<p>For most of us, there is an unwritten social contract that underlies our online messaging interactions. The clearest part of that contract is that certain types of messages demand a timely response.</p>
+<p>In our world of instant communications, it seems we have come to expect that the general immediacy and access to information afforded to us by our technology, should be reflected in our online social communication, just as it would be when face-to-face.</p>
+<p>But norms that exist in the real world don’t necessarily transfer easily to the digital realm. Is it time we developed a new social contract for online communications?</p>
+<p>Stoking the fires of social anxiety</p>
+<p>When the social contract is broken or even bent a little, it can introduce a hierarchy of discomfort into the communication process, often including anxiety and introspective rumination over the reasons for the non-reply.</p>
+<p>These types of emotions may be felt much more powerfully when we believe the person on the other end has actually read our message but has chosen to ignore us.</p>
+<p>In these cases, our discomfort may rise with the passing of time. The rising anxiety may escalate to the point where we bombard the non-replier with yet more messages to try to elicit a response.</p>
+<p>Of course, responses such as these can vary from person to person, and culture to culture. It has been suggested some people who are highly emotionally reactive and use text messaging excessively may actually feel rejected, isolated and suffer deep anxiety when replies to their messages are not immediate.</p>
+<p>Read receipts makes things worse</p>
+<p>It’s worth considering that the technology platform we use to conduct our messaging activities, may contribute to our expectations of an immediate reply.</p>
+<p>Virtually every online messaging platform has a way of informing us when our message has been delivered to, and read by, the recipient.</p>
+<p>WhatsApp has two blue ticks, one for successful delivery and one for when the message has been read. Facebook messenger shows the recipient’s profile picture beside the message, and so on.</p>
+<p>If we know the person well, we may even know they have message receipt notifications set to appear on their device. These notifications do not specifically trigger the read-receipt for our message, but we know it’s likely the recipient has at least seen our message.</p>
+<p>Combine all this with the ability to see when someone was last active online, and you have the perfect reply-status nightmare, if you are someone who cares.</p>
+<p>The fear of being ghosted</p>
+<p>It’s easy to understand how read-receipt anxiety has evolved. Just imagine the offline equivalent – you say something to someone, you know they have heard you, but they deliberately ignore you.</p>
+<p>When face to face, we would almost always make further enquiries to get our response and we’d be confused, or angry if it was not forthcoming.</p>
+<p>It’s really not very surprising, given the very high volume of online messaging we now engage in, that people expect the same communication etiquette when using messaging platforms.</p>
+<p>When non-reply behaviour is taken to an extreme, it may be analogous to a phenomenon known as ghosting. Ghosting involves indulging in behaviours such as not returning text messages, emails, phone calls or any related electronic communications.</p>
+<p>It can occur within any type of close relationship but is more often associated with intimate ones. People often use ghosting as way of breaking off a relationship without any apparent justification.</p>
+<p>Most of us would agree that a non-reply to an online message of love to an intimate other elicits a very strong emotional response, one that has very little to do with the length of the relationship in question.</p>
+<p>In any intimate relationship, a non-reply may make us feel humiliated, rejected, isolated and embarrassed. Over time our anxiety will increase until we hear that return chime – hopefully they love us too, along with an apology for the delay, and all emotions can return quickly to normal levels.</p>
+<p>Some people may actually use non-reply behaviour to manage their relationship dynamics, and torture their friends and loved ones. Of course no one reading this would ever have engaged in such Machiavellian behaviour!</p>
+<p>Perhaps we need a new type of online communication social contract, and let’s set these expectations at the beginning of a relationship, or any friendship.</p>
+<p>For example, on Tinder, profiles should perhaps have a box to tick to specify whether immediate replies are optional. Thanks to read-receipts and their associated emotional impact, relationship communication really has never been more complex and perplexing.</p>
+<hr>
+<h2 id="生词记录"><a href="#生词记录" class="headerlink" title="生词记录"></a>生词记录</h2><blockquote>
+<p>chime 敲，鸣，响</p>
+<p>contract 合同，契约；染重病；收缩，缩小</p>
+<p>underlie 是···的深层原因，对···有重大影响</p>
+<p>immediacy 即时性，直接性</p>
+<p>realm 领域，王国</p>
+<p>stoke 给···添柴火；煽动，激起</p>
+<p>introspective 自省的，反省的</p>
+<p>rumination 沉思，长时间思考</p>
+<p>elicit 探出，引出</p>
+<p>recipient 接收者，承受者</p>
+<p>unwritten 不成文的</p>
+<p>tick 滴答声；进展，进步；勾号</p>
+<p>equivalent 相等的，相同的；等同。等量</p>
+<p>etiquette 礼仪，礼节</p>
+<p>analogous 相似的，类似的</p>
+<p>justification 正当理由</p>
+<p>humiliate 羞辱，使丢脸</p>
+<p>torture 折磨，煎熬</p>
+<p>Machiavellian  马基雅弗利式的，为夺取权力而不择手段的</p>
+<p>specify 具体说明，明确指出</p>
+<p>perplexing 令人困惑的</p>
+</blockquote>
+
                 
             </div>
             <hr/>
@@ -518,8 +489,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
+                                <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                                    <span class="chip bg-color">英语提升</span>
                                 </a>
                             
                         </div>
@@ -862,45 +833,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/01/shu-ju-jie-gou-yu-suan-fa-tu-pian-c-yu-yan-ban/">
+                <a href="/2023/07/17/yi-du-bu-hui/">
                     <div class="card-image">
                         
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHw0MHx8R3JhcGh8ZW58MHx8fHwxNjg1MjYzNjY5fDA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="数据结构与算法-图篇（C语言版）">
+                        <img src="https://images.unsplash.com/photo-1610548822783-33fb5cb0e3a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwyfHxXaGF0c0FwcHxlbnwwfHx8fDE2ODk1NjM1MjN8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="已读不回">
                         
-                        <span class="card-title">数据结构与算法-图篇（C语言版）</span>
+                        <span class="card-title">已读不回</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            算法学习记录
+                            分享并记录一下看过的一些文章，旨在提升个人英文阅读水平
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    关于学习
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E9%98%85%E8%AF%BB%E5%88%86%E4%BA%AB/" class="post-category">
+                                    每日阅读分享
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">数据结构与算法</span>
+                    <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%8F%90%E5%8D%87/">
+                        <span class="chip bg-color">英语提升</span>
                     </a>
                     
                 </div>
@@ -914,12 +887,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/01/zhao-dao-ni-zhen-zheng-xiang-yao-de-dong-xi-newsletter-fen-xiang/">
+                <a href="/2023/07/15/shi-wei-zu-zhi-guan-xuan-a-si-ba-tian-ke-neng-zhi-yan/">
                     <div class="card-image">
                         
-                        <img src="https://images.unsplash.com/photo-1503363876019-10eaf537e61d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTgwOTN8MHwxfHNlYXJjaHwyNXx8dmlld3xlbnwwfHx8fDE2NzgyNDUxOTk&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="找到目标，直面欲望">
+                        <img src="https://images.unsplash.com/photo-1613510214658-f1e56b099811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwxMHx8Y29sYXxlbnwwfHx8fDE2ODgwOTM0Nzl8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="世卫组织官宣：阿斯巴甜可能致癌">
                         
-                        <span class="card-title">找到目标，直面欲望</span>
+                        <span class="card-title">世卫组织官宣：阿斯巴甜可能致癌</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -930,7 +903,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-15
                             </span>
                         <span class="publish-author">
                             
