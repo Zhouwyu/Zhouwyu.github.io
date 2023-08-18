@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>向量空间及其性质</title>
+      <link href="/2023/08/17/di-yi-zhang-xiang-liang-kong-jian-ji-qi-xing-zhi/"/>
+      <url>/2023/08/17/di-yi-zhang-xiang-liang-kong-jian-ji-qi-xing-zhi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="向量定义"><a href="#向量定义" class="headerlink" title="向量定义"></a>向量定义</h2><p>高中时：向量就是有大小有方向的量，只有长度大小和方向都相等时，两个向量才相等</p><p>线代中：n个有序的数 a1,a2···，an 所组成的数组称为<code>n维向量</code>。这n个数称为该向量的n个分量，n也称为该向量的维数；若两个向量的维数相同，且各个分量相等，则两向量相等</p><h2 id="零向量"><a href="#零向量" class="headerlink" title="零向量"></a>零向量</h2><p>n维向量的所有分量都是0，则称为<code>零向量</code></p><h2 id="向量加法和数乘"><a href="#向量加法和数乘" class="headerlink" title="向量加法和数乘"></a>向量加法和数乘</h2><p>加法：平行四边形法则&#x2F;三角形法则</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/bd9f1a7bb75d671d.png" alt="image-20230818091810801"></p><p>数乘：几何意义就是对向量进行伸缩，对应数字的符号决定了伸缩的方向；可用于定义平行（零向量与任意向量平行，可以说零向量的方向是任意的）</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/cac72081e98b1195.png" alt="image-20230818092108901"></p><p>减法：<img src="https://s3.bmp.ovh/imgs/2023/08/18/5750844763b6d6c9.png" alt="image-20230818092422724"></p><h2 id="线性组合与线性相关"><a href="#线性组合与线性相关" class="headerlink" title="线性组合与线性相关"></a>线性组合与线性相关</h2><ul><li>若干同维数的向量a1···am所组成的集合A，称为<code>向量组</code>；记作：A：a1···am 或 A &#x3D; {a1, ···, am}</li><li>给定向量组A和向量b，若存在一组实数k1···km使 ：b &#x3D; k1a1 + k2a2···+kmam；则称b为A的<code>线性组合</code>或b能由A<code>线性表示</code></li><li>给定向量组A，若存在不全为0的实数k1···km使 ：0 &#x3D; k1a1 + k2a2···+kmam，则称A<code>线性相关</code>，否则<code>线性无关</code></li><li>只要向量组中存在零向量，则该向量组必线性相关</li><li>线性无关的向量组，升维后依然线性无关</li><li>线性相关的向量组，降维后依然线性相关</li></ul><h2 id="向量空间"><a href="#向量空间" class="headerlink" title="向量空间"></a>向量空间</h2><p>向量空间：</p><ul><li>包含向量</li><li>向量的运动依然在空间中（运动：指向量的基本运算（加法，数乘等））</li><li>向量空间可以用向量组表示</li></ul><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/fc73150231877c72.png" alt="image-20230818093908388"></p><ul><li><strong>所有</strong>n维向量构成的集合是一个向量空间R^n</li><li>向量空间必须包含原点</li><li>向量空间不一定是R^n，也可以是其子集，称为<code>子空间</code>，如R^3中的原点，直线或平面</li></ul><h2 id="张成空间"><a href="#张成空间" class="headerlink" title="张成空间"></a>张成空间</h2><p>即向量组的所有线性组合所形成的向量空间</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/76455f626746396a.png" alt="image-20230818095116037"></p><p>几何意义：（补充：相交的两直线可唯一确定一个平面）</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/a62a03507c7f22e5.png" alt="image-20230818163132848"></p><p>等价向量组：向量A和向量B能够相互线性表示，则称该两向量组等价</p><blockquote><p>若有两个向量组A和B，则A和B等价 &lt;&#x3D;&gt; span(A) &#x3D; span(B)</p></blockquote><p>最大无关组：<img src="https://s3.bmp.ovh/imgs/2023/08/18/5cf28d9d6024f0cc.png" alt="image-20230818163716398"></p><p>最大无关组并不唯一，但其包含的向量数目是相同的，此数目就是<code>秩</code>，记作<code> r（向量组）</code></p><h2 id="向量空间的基"><a href="#向量空间的基" class="headerlink" title="向量空间的基"></a>向量空间的基</h2><p>定义：已知V为向量空间，若向量组A&#x3D;{a1, a2,···, an}是V的极大无关组，则向量组A称为向量空间V的一个<code>基</code></p><p>对向量空间而言，基并不唯一</p><p>有了基即可对向量空间中的向量进行定位，即找出对应向量的坐标</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/bcad2f45d9e1cc87.png" alt="image-20230818165401915"></p><p>由上图得出：即向量空间中每一个向量都可以由基线性表示，其对应的系数就是对应基下的坐标</p><blockquote><p>选择不同的基，实际上就是在向量空间中建立了不同的坐标系</p></blockquote><p>自然基：某一维为1，其余均为0，如下图</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/bd2b8628a2952329.png" alt="image-20230818170015202"></p><p>向量空间维度：若向量空间V的基为A &#x3D; A&#x3D;{a1, a2,···, ar}，则A的秩r称为<code>向量空间的维度</code>，或称V为r维向量空间</p><h2 id="数量积（点积）"><a href="#数量积（点积）" class="headerlink" title="数量积（点积）"></a>数量积（点积）</h2><p>欧几里得空间 &#x3D; 向量空间 + 长度和角度</p><blockquote><p>cosθ &#x3D; a1b1 + a2b2 &#x2F; ||a|| * ||b||，a,b !&#x3D; 0</p><p>即角度：cosθ &#x3D; a·b &#x2F; ||a|| * ||b|| (两向量的点积除以各自长度的乘积)</p><p>长度： ||a|| &#x3D; √a·a （向量自身的点积）</p></blockquote><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/57c7817faac290c4.png" alt="image-20230818171318637"></p><p>欧几里得空间 &#x3D; 向量空间  + 长度和角度 &#x3D; 向量空间 + 点积</p><p><strong>注意：在自然基下才能通过点积计算长度和角度</strong></p><p>点积的性质：</p><ul><li>交换律： a·b &#x3D; b·a</li><li>数乘结合律：(ka)·b &#x3D; k(b·a)</li><li>分配律：(a+b)·c &#x3D; a·c + b·c</li><li>点积的数乘结合律并不满足向量的结合律</li></ul><p>余弦相似性：余弦值可用于度量向量之间方向的相似性</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/18/ecf56a5caf281e25.png" alt="image-20230818173044133"></p><p>若两向量内积为0，则称它们是<code>正交</code>的</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 关于学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>成年人一只手有多重？</title>
       <link href="/2023/07/27/cheng-nian-ren-yi-zhi-shou-you-duo-chong/"/>
       <url>/2023/07/27/cheng-nian-ren-yi-zhi-shou-you-duo-chong/</url>
