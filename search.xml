@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>矩阵函数及其几何意义</title>
+      <link href="/2023/08/21/di-san-zhang-ju-zhen-han-shu-ji-qi-ji-he-yi-yi/"/>
+      <url>/2023/08/21/di-san-zhang-ju-zhen-han-shu-ji-qi-ji-he-yi-yi/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 关于学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>矩阵和矩阵乘法</title>
+      <link href="/2023/08/19/di-er-zhang-ju-zhen-he-ju-zhen-cheng-fa/"/>
+      <url>/2023/08/19/di-er-zhang-ju-zhen-he-ju-zhen-cheng-fa/</url>
+      
+        <content type="html"><![CDATA[<h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><p><img src="https://s3.bmp.ovh/imgs/2023/08/19/83b9f6d30eeddbc8.png" alt="image-20230819170247649"></p><p>矩阵作为线性方程组的一种标记法而被引入数学舞台的</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/19/7fedaa3f2b7a295b.png" alt="矩阵定义"></p><ul><li><p>矩阵的第i行可以看作行向量，用 a<del>i*</del> 表示；同样第j列可以看作列向量，用a<del>*j</del> 表示</p></li><li><p>行数和列数相等，且都等于n的矩阵称为n阶矩阵或n阶<code>方阵</code>，可记为 A<del>n</del></p></li><li><p>元素均为0的叫<code>零矩阵</code>，记作 O</p></li></ul><h2 id="高斯消元法"><a href="#高斯消元法" class="headerlink" title="高斯消元法"></a>高斯消元法</h2><ol><li>消元</li><li>回代</li><li>方程两侧除以未知数的系数，得到结果</li></ol><h2 id="特殊矩阵"><a href="#特殊矩阵" class="headerlink" title="特殊矩阵"></a>特殊矩阵</h2><ol><li>行阶梯矩阵</li></ol><ul><li>非零矩阵</li><li>非零行在零行（若存在的话）的上面</li><li>非零行最左边的首非零元素在上一行（若存在的话）的首非零元素的右面</li><li>非零行最左边的首非零元素叫<code>主元</code></li></ul><p><img src="https://s3.bmp.ovh/imgs/2023/08/19/288f89cb2d1a8a34.png" alt="image-20230819171734094"></p><ol start="2"><li>对角阵</li></ol><ul><li>n阶方阵主对角线以外的元素均为0，就叫n阶对角矩阵</li><li>两同阶的对角矩阵相乘，结果是对应的对角元素相乘，同时也是对角矩阵</li></ul><ol start="3"><li>单位阵</li></ol><ul><li>主对角线上的所有元素均为1，其余元素均为0，记作 <code>I</code>或记作 <code>E</code></li><li>矩阵乘法中，单位阵乘上任意矩阵A，其结果还是A</li></ul><ol start="4"><li>行最简矩阵</li></ol><ul><li>A是行阶梯矩阵</li><li>主元为1</li><li>除主元外，其所在列上下其他元素均为0</li></ul><p><img src="https://s3.bmp.ovh/imgs/2023/08/19/3110a48942c9a9bb.png" alt="image-20230819172300905"></p><h2 id="初等行变换与初等行矩阵"><a href="#初等行变换与初等行矩阵" class="headerlink" title="初等行变换与初等行矩阵"></a>初等行变换与初等行矩阵</h2><ol><li>倍加变换：某行的k倍加到另一行</li><li>倍乘变换：某行乘k倍</li><li>对换变换：某两行互换</li></ol><p>在单位阵上应用初等行变换一次得到的就是<code>初等行矩阵</code></p><h2 id="矩阵的加法与乘法"><a href="#矩阵的加法与乘法" class="headerlink" title="矩阵的加法与乘法"></a>矩阵的加法与乘法</h2><p>两个矩阵行数相同，列数相同，称为<code>同型矩阵</code>，如果对应的元素都相等，则两矩阵相等</p><p>同型矩阵相加才是合法的，其结果是对应的元素相加</p><p>矩阵的数乘其结果是矩阵的各个元素均乘上该数即可，若有矩阵A，则-A称为负矩阵，A+（-A）&#x3D;O</p><p>矩阵乘法合法性：</p><ul><li>m * n矩阵只能和n * p矩阵相乘</li><li>相乘后矩阵大小为m * p</li></ul><p>矩阵乘法的行观点：</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/21/8234804a5b358a60.png" alt="image-20230821163059895"></p><ul><li>适用于 xA</li><li>其结果可以看作是矩阵A行向量线性组合</li></ul><p>矩阵乘法的列观点：</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/21/200dd0453e1acad7.png" alt="image-20230821163132733"></p><ul><li>适用于Ax</li><li>其结果可以看作是矩阵A的列向量线性组合</li></ul><p>矩阵乘法的点积观点：</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/21/397ee8669f85d14a.png" alt="image-20230821163437641"></p><ul><li>适用于矩阵与矩阵的相乘</li><li>左侧矩阵的行向量点积右侧矩阵的列向量，即可得到矩阵的每个元素</li></ul><h2 id="矩阵的幂运算与转置"><a href="#矩阵的幂运算与转置" class="headerlink" title="矩阵的幂运算与转置"></a>矩阵的幂运算与转置</h2><p>设A是方阵，则A^k+1^ &#x3D; A^k^A^1^</p><p>把矩阵A的行换成对应的列，此操作叫矩阵的转置，转置后的矩阵称为<code>转置矩阵</code>，记作A^T^</p><p>(A^T^)^T^ &#x3D; A，（AB）^T^ &#x3D; B^T^A^T^，(A^T^)^n^ &#x3D; (A^n^)^T^，（A+B）^T^ &#x3D; (A^T^ + B^T^)</p><p>若A^T^ &#x3D; A，则称矩阵A为<code>对称矩阵</code>，若A^T^ &#x3D; -A，则称矩阵A为<code>反对称矩阵</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 关于学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>向量空间及其性质</title>
       <link href="/2023/08/17/di-yi-zhang-xiang-liang-kong-jian-ji-qi-xing-zhi/"/>
       <url>/2023/08/17/di-yi-zhang-xiang-liang-kong-jian-ji-qi-xing-zhi/</url>
