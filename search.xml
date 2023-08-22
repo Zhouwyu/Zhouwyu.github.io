@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>矩阵的秩的定义及意义</title>
+      <link href="/2023/08/22/di-si-zhang-ju-zhen-de-zhi-de-ding-yi-ji-yi-yi/"/>
+      <url>/2023/08/22/di-si-zhang-ju-zhen-de-zhi-de-ding-yi-ji-yi-yi/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 关于学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>矩阵函数及其几何意义</title>
       <link href="/2023/08/21/di-san-zhang-ju-zhen-han-shu-ji-qi-ji-he-yi-yi/"/>
       <url>/2023/08/21/di-san-zhang-ju-zhen-han-shu-ji-qi-ji-he-yi-yi/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="矩阵函数与线性函数"><a href="#矩阵函数与线性函数" class="headerlink" title="矩阵函数与线性函数"></a>矩阵函数与线性函数</h2><blockquote><p>函数：假设有两个非空集合，函数指的是X, Y之间的一种对应关系，这种对应关系要满足两个条件：</p><ol><li>X中的所有元素都要在Y中找到与之对应的元素</li><li>X中的元素要与Y中的元素一一对应</li></ol></blockquote><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/10323d2e6a3a50c3.png" alt="image-20230822160818573"></p><p>矩阵函数： Ax &#x3D; y</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/547719b8dbf500ba.png" alt="image-20230822160910290"></p><p>矩阵是线性函数，何为线性函数？</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/e9450e010801f7fc.png" alt="image-20230822160957607"></p><p>简而言之，<strong>只有过原点的函数才是线性函数</strong></p><h2 id="常用矩阵函数"><a href="#常用矩阵函数" class="headerlink" title="常用矩阵函数"></a>常用矩阵函数</h2><ol><li><p>旋转矩阵函数：<img src="https://s3.bmp.ovh/imgs/2023/08/22/85e2b626149e8b11.png" alt="image-20230822161141653"></p><ul><li>该矩阵左乘Aa &#x3D; b的结果就是将b相对a逆时针旋转了θ</li></ul></li><li><p>单位阵：<img src="https://s3.bmp.ovh/imgs/2023/08/22/5e61387471557324.png" alt="image-20230822161424474"></p><ul><li><p>此时列向量矩阵函数Ax &#x3D; y的输入向量x和输出向量y是一样的</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/56f0fd175ddb5e12.png" alt="image-20230822162352063"></p></li></ul></li><li><p>镜像矩阵：<img src="https://s3.bmp.ovh/imgs/2023/08/22/d3080cc25f8e2f69.png" alt="image-20230822161616406"></p><ul><li><p>此时列向量矩阵函数Ax &#x3D; y的输入向量x和输出向量y的坐标顺序是相反的</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/44e75f4ae7dfd348.png" alt="image-20230822162424209"></p></li></ul></li><li><p>伸缩矩阵：<img src="https://s3.bmp.ovh/imgs/2023/08/22/4017c72891ffb54e.png" alt="image-20230822161740967"></p><ul><li><p>在列向量矩阵函数Ax&#x3D;y的作用下，输出向量y在e2方向上被拉伸了k倍</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/49a5e9375558bbf2.png" alt="image-20230822162443769"></p></li></ul></li><li><p>剪切矩阵：<img src="https://s3.bmp.ovh/imgs/2023/08/22/6c3722274df831e7.png" alt="image-20230822161937412"></p><ul><li><p>在列向量矩阵函数Ax&#x3D;y的作用下，输出向量y在e1方向上进行了平移</p><p><img src="https://s3.bmp.ovh/imgs/2023/08/22/a65b87030e268c3e.png" alt="image-20230822162526813"></p></li></ul></li></ol>]]></content>
       
       
       <categories>
