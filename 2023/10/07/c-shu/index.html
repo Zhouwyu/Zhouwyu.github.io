@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    152
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
 
@@ -448,6 +448,253 @@ vector&lt;int&gt; levelOrder(TreeNode *root) &#123;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>深度优先遍历（利用递归）:</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;
+&#x2F;&#x2F; Created by zhou on 2023&#x2F;10&#x2F;10.
+&#x2F;&#x2F;
+#include &quot;..&#x2F;utils&#x2F;common.h&quot;
+
+vector&lt;int&gt; vec;
+
+&#x2F;**
+ * 前序：根-左-右
+ *&#x2F;
+void preOrder(TreeNode *root) &#123;
+    if (root &#x3D;&#x3D; nullptr) return;
+    vec.push_back(root-&gt;val);
+    preOrder(root-&gt;left);
+    preOrder(root-&gt;right);
+&#125;
+
+&#x2F;**
+ * 中序：左-根-右
+ *&#x2F;
+void inOrder(TreeNode *root) &#123;
+    if (root &#x3D;&#x3D; nullptr) return;
+    inOrder(root-&gt;left);
+    vec.push_back(root-&gt;val);
+    inOrder(root-&gt;right);
+&#125;
+
+&#x2F;**
+ * 后序：左-右-根
+ *&#x2F;
+void postOrder(TreeNode *root) &#123;
+    if (root &#x3D;&#x3D; nullptr) return;
+    postOrder(root-&gt;left);
+    postOrder(root-&gt;right);
+    vec.push_back(root-&gt;val);
+&#125;	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>数组表示二叉树：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;
+&#x2F;&#x2F; Created by zhou on 2023&#x2F;10&#x2F;10.
+&#x2F;&#x2F;
+#include &quot;..&#x2F;utils&#x2F;common.h&quot;
+
+
+
+&#x2F;**
+ * 数组表示二叉树
+ *&#x2F;
+class ArrayBinaryTree &#123;
+private:
+    vector&lt;int&gt; tree;
+
+    void dfs(int index, string order, vector&lt;int&gt; &amp;res) &#123;
+        if(val(index) &#x3D;&#x3D; INT_MAX) return;
+        &#x2F;&#x2F; 前序遍历
+        if(order &#x3D;&#x3D; &quot;pre&quot;) &#123;
+            res.push_back(val(index));
+        &#125;
+        dfs(left(index), order, res);
+        &#x2F;&#x2F; 中序遍历
+        if(order &#x3D;&#x3D; &quot;in&quot;) &#123;
+            res.push_back(val(index));
+        &#125;
+        dfs(right(index), order, res);
+        &#x2F;&#x2F; 后序遍历
+        if (order &#x3D;&#x3D; &quot;post&quot;) &#123;
+            res.push_back(val(index));
+        &#125;
+    &#125;
+public:
+
+    ArrayBinaryTree(vector&lt;int&gt; arr) &#123;
+        tree &#x3D; arr;
+    &#125;
+
+    &#x2F;**
+     * 数组长度
+     *&#x2F;
+    int size() &#123;
+        return tree.size();
+    &#125;
+
+    &#x2F;**
+     * 索引对应的值
+     *&#x2F;
+    int val(int i) &#123;
+        &#x2F;&#x2F; 越界处理
+        if(i &lt; 0 || i &gt;&#x3D; size()) &#123;
+            return INT_MAX;
+        &#125;
+        return tree[i];
+    &#125;
+
+    &#x2F;**
+     * 左孩子的索引
+     *&#x2F;
+    int left(int i) &#123;
+        return 2 * i + 1;
+    &#125;
+
+    &#x2F;**
+     * 右孩子的索引
+     *&#x2F;
+    int right(int i) &#123;
+        return 2 * i + 2;
+    &#125;
+
+    &#x2F;**
+     * 找当前索引的父索引
+     *&#x2F;
+    int parent(int i) &#123;
+        if (i &#x3D;&#x3D; 0) return 0;
+        return (i - 1) &#x2F; 2;
+    &#125;
+
+    &#x2F;**
+     * 直接遍历数组就是层序遍历的结果
+     *&#x2F;
+    vector&lt;int&gt; levelOrder() &#123;
+        vector&lt;int&gt; res;
+        for(int i &#x3D; 0; i &lt; size(); i++) &#123;
+            &#x2F;&#x2F; 不是空位就记录下来
+            if(tree[i] !&#x3D; INT_MAX) &#123;
+                res.push_back(val(i));
+            &#125;
+        &#125;
+        return res;
+    &#125;
+
+    vector&lt;int&gt; preOrder() &#123;
+        vector&lt;int&gt; res;
+        dfs(0, &quot;pre&quot;, res);
+        return res;
+    &#125;
+
+    vector&lt;int&gt; inOrder() &#123;
+        vector&lt;int&gt; res;
+        dfs(0, &quot;in&quot;, res);
+        return res;
+    &#125;
+
+    vector&lt;int&gt; postOrder() &#123;
+        vector&lt;int&gt; res;
+        dfs(0, &quot;post&quot;, res);
+        return res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p>查找节点：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;
+&#x2F;&#x2F; Created by zhou on 2023&#x2F;10&#x2F;10.
+&#x2F;&#x2F;
+#include &quot;..&#x2F;utils&#x2F;common.h&quot;
+
+TreeNode * binarySearch(TreeNode *root, int val) &#123;
+    TreeNode *cur &#x3D; root;
+    while (cur !&#x3D; nullptr) &#123;
+        &#x2F;&#x2F; 小的往左找
+        if (cur-&gt;val &gt; val) cur &#x3D; cur-&gt;left;
+        &#x2F;&#x2F; 大的往右找
+        else if (cur-&gt;val &lt; val) cur &#x3D; cur-&gt;right;
+        &#x2F;&#x2F; 找到跳出去
+        else break;
+    &#125;
+    &#x2F;&#x2F; 最终返回结果节点
+    return cur;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加节点：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void addTreeNode(TreeNode *root, int val) &#123;
+    &#x2F;&#x2F; 根节点为空，直接初始化为根节点
+    if (root &#x3D;&#x3D; nullptr) &#123;
+        root &#x3D; new TreeNode(val);
+        return;
+    &#125;
+
+    TreeNode *cur &#x3D; root;
+    &#x2F;&#x2F; 记录上一次的节点
+    TreeNode *pre;
+    &#x2F;&#x2F; 不断循环直至到叶子节点为止
+    while (cur !&#x3D; nullptr) &#123;
+        pre &#x3D; cur;
+        &#x2F;&#x2F; 已存在的不准插入
+        if (cur-&gt;val &#x3D;&#x3D; val) return;
+        else if (cur-&gt;val &gt; val) cur &#x3D; cur-&gt;left;
+        else if (cur-&gt;val &lt; val) cur &#x3D; cur-&gt;right;
+    &#125;
+    &#x2F;&#x2F; 小的往左走，大的往右走
+    if (pre-&gt;val &lt; val) pre-&gt;right &#x3D; new TreeNode(val);
+    else if (pre-&gt;val &gt; val) pre-&gt;left &#x3D; new TreeNode(val);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>删除节点：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void removeTreeNode(TreeNode *root, int val) &#123;
+    &#x2F;&#x2F; 空树，直接结束
+    if (root &#x3D;&#x3D; nullptr) return;
+
+    TreeNode *cur &#x3D; root;
+    TreeNode *pre;
+    &#x2F;&#x2F; 寻找需要删除的节点
+    while (cur !&#x3D; nullptr) &#123;
+        pre &#x3D; cur;
+        &#x2F;&#x2F; 找到跳出循环
+        if (cur-&gt;val &#x3D;&#x3D; val) break;
+        else if (cur-&gt;val &gt; val) cur &#x3D; cur-&gt;left;
+        else cur &#x3D; cur-&gt;right;
+    &#125;
+    &#x2F;&#x2F; 没找到不用删
+    if (cur &#x3D;&#x3D; nullptr) return;
+
+    &#x2F;&#x2F; 度为0或1的操作，可能只有左孩子或右孩子，也可能两者皆有
+    if (cur-&gt;left &#x3D;&#x3D; nullptr || cur-&gt;right &#x3D;&#x3D; nullptr) &#123;
+        &#x2F;&#x2F; child可能是left, right, nullptr中的任一个
+        TreeNode *child &#x3D; cur-&gt;left !&#x3D; nullptr ? cur-&gt;left : cur-&gt;right;
+        &#x2F;&#x2F; 当前删除的不是根节点
+        if (cur !&#x3D; root) &#123;
+            &#x2F;&#x2F; 看删除的节点在左还是右，重新指向
+            if (pre-&gt;left &#x3D;&#x3D; cur) pre-&gt;left &#x3D; child;
+            else pre-&gt;right &#x3D; child;
+        &#125; else &#123;
+            &#x2F;&#x2F; 删除节点是根节点，则重新定义根节点
+            root &#x3D; child;
+        &#125;
+        &#x2F;&#x2F; 执行删除
+        delete cur;
+    &#125;
+    &#x2F;&#x2F; 度为2的操作：需找左子树的最大节点或右子树的最小节点
+    &#x2F;&#x2F; 此处以找右子树的最小节点为例
+    else &#123;
+        &#x2F;&#x2F; 先从右子树着手
+        TreeNode *tmp &#x3D; cur-&gt;right;
+        &#x2F;&#x2F; 寻找最小节点（肯定是不断往左找，最左下角的就是）
+        &#x2F;&#x2F; 注意不要写成tmp !&#x3D; nullptr，这样写找到的是目标单位的左孩子，会导致空指针
+        while (tmp-&gt;left !&#x3D; nullptr) &#123;
+            tmp &#x3D; tmp-&gt;left;
+        &#125;
+        &#x2F;&#x2F; 记录下来当前值
+        int tmpVal &#x3D; tmp-&gt;val;
+        &#x2F;&#x2F; 最左下角的节点可能还有右子树，要把目标节点往前移相当于继续执行删除操作，因此递归
+        removeTreeNode(root, tmpVal);
+        &#x2F;&#x2F; 最后把右子树的最小节点赋值给原来要删除的节点即可（通过换值完成删除）
+        cur-&gt;val &#x3D; tmpVal;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h2><p>待更新</p>
 
                 
             </div>
@@ -806,17 +1053,16 @@ vector&lt;int&gt; levelOrder(TreeNode *root) &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/10/07/c-shu/">
+                <a href="/2023/10/10/c-dui/">
                     <div class="card-image">
                         
-                        <img src="https://images.unsplash.com/photo-1649451844808-b81427e7a1f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwxN3x8QyUyQiUyQnxlbnwwfHx8fDE2OTY1ODM5NDR8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="C++_树">
+                        <img src="https://images.unsplash.com/photo-1649451844808-b81427e7a1f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTgwOTN8MHwxfHNlYXJjaHwxN3x8QyUyQiUyQnxlbnwwfHx8fDE2OTY1ODM5NDR8MA&ixlib=rb-4.0.3&q=80&w=1080" class="responsive-img" alt="C++_堆">
                         
-                        <span class="card-title">C++_树</span>
+                        <span class="card-title">C++_堆</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -826,9 +1072,9 @@ vector&lt;int&gt; levelOrder(TreeNode *root) &#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -841,7 +1087,6 @@ vector&lt;int&gt; levelOrder(TreeNode *root) &#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1090,7 +1335,7 @@ vector&lt;int&gt; levelOrder(TreeNode *root) &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">171.5k</span>
+                        class="white-color">175.4k</span>
             
             
             
